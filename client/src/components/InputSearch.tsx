@@ -1,15 +1,32 @@
 import "../styles/InputSearch.css";
 import { useState } from "react";
+import axios from "axios";
+
+interface dataTypes {
+  lon: number;
+  lat: number;
+}
+
+const apiKey = import.meta.env.VITE_API_KEY;
 
 export default function InputSearch() {
   const [city, setCity] = useState("");
+  const [data, setData] = useState([] as dataTypes[]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.currentTarget.value);
   };
 
   const handleClick = () => {
-    console.info("Votre ville : ", city); //Ajouter la requete Api ici
+    axios
+      .get(
+        `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`,
+      )
+      .then((response) => setData(response.data))
+      .catch((error) => console.info(error));
+    console.info(data);
+
+    axios.get;
   };
 
   return (
@@ -21,7 +38,11 @@ export default function InputSearch() {
         className="input-text"
         onChange={handleChange}
       />
-      <button type="button" className="btn-search" onClick={handleClick}>
+      <button
+        type="button"
+        className="btn-search"
+        onClick={() => handleClick()}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="32px"
