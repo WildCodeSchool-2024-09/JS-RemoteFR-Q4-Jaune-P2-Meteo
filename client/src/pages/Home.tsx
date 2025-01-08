@@ -1,4 +1,7 @@
+import "../components/MainCard";
+
 import CardAlert from "../components/CardAlert";
+
 export default function Home() {
   return (
     <>
