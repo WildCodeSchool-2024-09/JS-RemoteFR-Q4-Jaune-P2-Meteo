@@ -1,0 +1,14 @@
+.container-hours {
+  display: flex;
+  justify-content: space-evenly;
+  min-width: 100vw;
+}
+
+.card-hour {
+  text-align: center;
+  width: 5rem;
+  height: 7rem;
+  background-color: rgba(0, 0, 0, 0.093);
+  border-radius: 20px;
+  padding: 1rem 1rem;
+}
