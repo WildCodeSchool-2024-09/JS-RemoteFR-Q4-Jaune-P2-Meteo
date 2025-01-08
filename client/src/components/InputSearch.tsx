@@ -1,10 +1,27 @@
 import "../styles/InputSearch.css";
+import { useState } from "react";
 
 export default function InputSearch() {
+  const [city, setCity] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCity(e.currentTarget.value);
+  };
+
+  const handleClick = () => {
+    console.info("Votre ville : ", city); //Ajouter la requete Api ici
+  };
+
   return (
     <div className="container-input">
-      <input type="text" placeholder="Ville.." className="input-text" />
-      <button type="button" className="btn-search">
+      <input
+        value={city}
+        type="text"
+        placeholder="Ville.."
+        className="input-text"
+        onChange={handleChange}
+      />
+      <button type="button" className="btn-search" onClick={handleClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="32px"
