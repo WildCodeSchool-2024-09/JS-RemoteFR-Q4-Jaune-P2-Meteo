@@ -1,38 +1,68 @@
 import "../styles/InputSearch.css";
+import axios from "axios";
 import { useState } from "react";
+
+interface dataTypes {
+  lon: number;
+  lat: number;
+}
+
+const apiKey = import.meta.env.VITE_API_KEY;
 
 export default function InputSearch() {
   const [city, setCity] = useState("");
+  const [data, setData] = useState([] as dataTypes[]);
+  const [weatherData, setWeatherData] = useState({}); // Il faut typer
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.currentTarget.value);
   };
 
   const handleClick = () => {
-    console.info("Votre ville : ", city); //Ajouter la requete Api ici
+    axios
+      .get(
+        `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`,
+      )
+      .then((response) => setData(response.data))
+      .catch((error) => console.info(error));
+    console.info(data);
+
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${data[0].lat}&lon=${data[0].lon}&units=metric&appid=${apiKey}`,
+      )
+      .then((response) => setWeatherData(response.data))
+      .catch((error) => console.info(error));
+    console.info(weatherData);
   };
 
   return (
-    <div className="container-input">
-      <input
-        value={city}
-        type="text"
-        placeholder="Chercher une ville..."
-        className="input-text"
-        onChange={handleChange}
-      />
-      <button type="button" className="btn-search" onClick={handleClick}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="32px"
-          viewBox="0 -960 960 960"
-          width="32px"
-          fill="#e8eaed"
-          aria-hidden="true"
+    <>
+      <div className="container-input">
+        <input
+          value={city}
+          type="text"
+          placeholder="Chercher une ville..."
+          className="input-text"
+          onChange={handleChange}
+        />
+        <button
+          type="button"
+          className="btn-search"
+          onClick={() => handleClick()}
         >
-          <path d="M792-120.67 532.67-380q-30 25.33-69.64 39.67Q423.39-326 378.67-326q-108.44 0-183.56-75.17Q120-476.33 120-583.33t75.17-182.17q75.16-75.17 182.5-75.17 107.33 0 182.16 75.17 74.84 75.17 74.84 182.27 0 43.23-14 82.9-14 39.66-40.67 73l260 258.66-48 48Zm-414-272q79.17 0 134.58-55.83Q568-504.33 568-583.33q0-79-55.42-134.84Q457.17-774 378-774q-79.72 0-135.53 55.83-55.8 55.84-55.8 134.84t55.8 134.83q55.81 55.83 135.53 55.83Z" />
-        </svg>
-      </button>
-    </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="32px"
+            viewBox="0 -960 960 960"
+            width="32px"
+            fill="#e8eaed"
+            aria-hidden="true"
+          >
+            <path d="M792-120.67 532.67-380q-30 25.33-69.64 39.67Q423.39-326 378.67-326q-108.44 0-183.56-75.17Q120-476.33 120-583.33t75.17-182.17q75.16-75.17 182.5-75.17 107.33 0 182.16 75.17 74.84 75.17 74.84 182.27 0 43.23-14 82.9-14 39.66-40.67 73l260 258.66-48 48Zm-414-272q79.17 0 134.58-55.83Q568-504.33 568-583.33q0-79-55.42-134.84Q457.17-774 378-774q-79.72 0-135.53 55.83-55.8 55.84-55.8 134.84t55.8 134.83q55.81 55.83 135.53 55.83Z" />
+          </svg>
+        </button>
+      </div>
+    </>
   );
 }
