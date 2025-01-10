@@ -1,31 +1,18 @@
 import "../styles/InputSearch.css";
-import type { WeatherDataTypes, dataTypes } from "../App";
 
-interface InputSearchProps {
+interface propsTypes {
   city: string;
-  setCity: React.Dispatch<React.SetStateAction<string>>;
-  setData: React.Dispatch<React.SetStateAction<dataTypes[]>>;
-  setWeatherData: React.Dispatch<React.SetStateAction<WeatherDataTypes>>;
-  handleFetchData: (
-    city: string,
-    setData: React.Dispatch<React.SetStateAction<dataTypes[]>>,
-    setWeatherData: React.Dispatch<React.SetStateAction<WeatherDataTypes>>,
-  ) => void;
+  setCity: (city: string) => void;
+  handleFetchData: () => void;
 }
 
 export default function InputSearch({
   city,
   setCity,
-  setData,
-  setWeatherData,
   handleFetchData,
-}: InputSearchProps) {
+}: propsTypes) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.currentTarget.value);
-  };
-
-  const handleClick = () => {
-    handleFetchData(city, setData, setWeatherData);
   };
 
   return (
@@ -38,7 +25,7 @@ export default function InputSearch({
           className="input-text"
           onChange={handleChange}
         />
-        <button type="button" className="btn-search" onClick={handleClick}>
+        <button type="button" className="btn-search" onClick={handleFetchData}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="32px"
