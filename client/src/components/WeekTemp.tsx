@@ -1,4 +1,4 @@
-import { LineChart, Line } from "recharts";
+import { Line, LineChart } from "recharts";
 export default function WeekTemp() {
   const data = [
     { name: "Lundi", temp: 33, humidity: 80 },

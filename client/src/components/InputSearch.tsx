@@ -1,39 +1,18 @@
 import "../styles/InputSearch.css";
-import axios from "axios";
-import { useState } from "react";
 
-interface dataTypes {
-  lon: number;
-  lat: number;
+interface propsTypes {
+  city: string;
+  setCity: (city: string) => void;
+  handleFetchData: () => void;
 }
 
-const apiKey = import.meta.env.VITE_API_KEY;
-
-export default function InputSearch() {
-  const [city, setCity] = useState("");
-  const [data, setData] = useState([] as dataTypes[]);
-  const [weatherData, setWeatherData] = useState({}); // Il faut typer
-
+export default function InputSearch({
+  city,
+  setCity,
+  handleFetchData,
+}: propsTypes) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.currentTarget.value);
-  };
-
-  const handleClick = () => {
-    axios
-      .get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`,
-      )
-      .then((response) => setData(response.data))
-      .catch((error) => console.info(error));
-    console.info(data);
-
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${data[0].lat}&lon=${data[0].lon}&units=metric&appid=${apiKey}`,
-      )
-      .then((response) => setWeatherData(response.data))
-      .catch((error) => console.info(error));
-    console.info(weatherData);
   };
 
   return (
@@ -46,11 +25,7 @@ export default function InputSearch() {
           className="input-text"
           onChange={handleChange}
         />
-        <button
-          type="button"
-          className="btn-search"
-          onClick={() => handleClick()}
-        >
+        <button type="button" className="btn-search" onClick={handleFetchData}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="32px"
