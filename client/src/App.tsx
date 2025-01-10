@@ -2,9 +2,9 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import { useEffect, useState } from "react";
 import InputSearch from "./components/InputSearch";
-import axios from "axios";
+import Navbar from "./components/NavBar";
 
-const apiKey = import.meta.env.VITE_API_KEY;
+import axios from "axios";
 
 interface cityDataTypes {
   lon: number;
@@ -12,6 +12,8 @@ interface cityDataTypes {
 }
 
 function App() {
+  const apiKey = import.meta.env.VITE_API_KEY;
+
   const [city, setCity] = useState("" as string);
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
   const [weatherData, setWeatherData] = useState([] as []);
@@ -43,7 +45,7 @@ function App() {
         handleFetchData={handleFetchData}
       />
       <Outlet />
-      <h1>NavBar</h1>
+      <Navbar />
     </>
   );
 }
