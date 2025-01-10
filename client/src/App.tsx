@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
 import InputSearch from "./components/InputSearch";
+import Navbar from "./components/NavBar";
 
 function App() {
   return (
     <>
       <InputSearch />
       <Outlet />
-      <h1>NavBar</h1>
+      <Navbar />
     </>
   );
 }
