@@ -3,17 +3,15 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import InputSearch from "./components/InputSearch";
 import Navbar from "./components/NavBar";
-
+import WeatherContext from "./components/WeatherContext";
 import axios from "axios";
 
 interface cityDataTypes {
   lon: number;
   lat: number;
 }
-
+const apiKey = import.meta.env.VITE_API_KEY;
 function App() {
-  const apiKey = import.meta.env.VITE_API_KEY;
-
   const [city, setCity] = useState("" as string);
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
   const [weatherData, setWeatherData] = useState([] as []);
@@ -44,8 +42,10 @@ function App() {
         setCity={setCity}
         handleFetchData={handleFetchData}
       />
-      <Outlet />
-      <Navbar />
+      <WeatherContext.Provider value={{ weatherData: weatherData }}>
+        <Outlet />
+        <Navbar />
+      </WeatherContext.Provider>
     </>
   );
 }
