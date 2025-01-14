@@ -1,6 +1,6 @@
 import "../styles/InputSearch.css";
-import { useWeather } from "./WeatherContext";
 import SvgIcons from "./SvgIcons";
+import { useWeather } from "./WeatherContext";
 
 const icons = [
   {
