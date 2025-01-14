@@ -1,0 +1,10 @@
+.week-temp {
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.week-temp h2 {
+  font-size: 1.1rem;
+  font-weight: 300;
+  text-align: center;
+}

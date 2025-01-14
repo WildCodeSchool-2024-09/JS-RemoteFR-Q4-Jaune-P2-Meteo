@@ -31,7 +31,7 @@ const Weathercontext = createContext<propsTypes | null>(null);
 export function Weatherprovider({ children }: WeatherproviderType) {
   const [city, setCity] = useState("" as string);
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
-  const [weatherData, setWeatherData] = useState<{ name: string }>({
+  const [weatherData, setWeatherData] = useState({
     name: "",
   });
   console.info(cityData, weatherData);
