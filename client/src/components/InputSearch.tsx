@@ -1,11 +1,6 @@
 import "../styles/InputSearch.css";
 import SvgIcons from "./SvgIcons";
-
-interface propsTypes {
-  city: string;
-  setCity: (city: string) => void;
-  handleFetchData: () => void;
-}
+import { useWeather } from "./WeatherContext";
 
 const icons = [
   {
@@ -17,11 +12,8 @@ const icons = [
   },
 ];
 
-export default function InputSearch({
-  city,
-  setCity,
-  handleFetchData,
-}: propsTypes) {
+export default function InputSearch() {
+  const { city, setCity, handleFetchData } = useWeather();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.currentTarget.value);
   };

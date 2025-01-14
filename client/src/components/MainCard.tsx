@@ -1,5 +1,6 @@
 import "../styles/MainCard.css";
 import SvgIcons from "./SvgIcons";
+import { useWeather } from "./WeatherContext";
 
 const icons = [
   {
@@ -25,12 +26,13 @@ const icons = [
     },
   },
 ];
-
 export default function MainCard() {
+  const { weatherData } = useWeather();
+
   return (
     <section className="main-card-section">
       <div className="city-date-main-card">
-        <h1 className="title-main-card">Paris</h1>
+        <h1 className="title-main-card">{weatherData.name}</h1>
         <h2 className="date-main-card">Mardi 07 janvier 2024</h2>
       </div>
       <div className="main-card-container">
