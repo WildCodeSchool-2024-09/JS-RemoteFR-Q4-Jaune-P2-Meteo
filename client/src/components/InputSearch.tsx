@@ -1,16 +1,8 @@
 import "../styles/InputSearch.css";
+import { useWeather } from "./WeatherContext";
 
-interface propsTypes {
-  city: string;
-  setCity: (city: string) => void;
-  handleFetchData: () => void;
-}
-
-export default function InputSearch({
-  city,
-  setCity,
-  handleFetchData,
-}: propsTypes) {
+export default function InputSearch() {
+  const { city, setCity, handleFetchData } = useWeather();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.currentTarget.value);
   };

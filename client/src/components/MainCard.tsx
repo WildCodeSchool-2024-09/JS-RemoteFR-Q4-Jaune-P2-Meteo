@@ -1,10 +1,13 @@
 import "../styles/MainCard.css";
+import { useWeather } from "./WeatherContext";
 
 export default function MainCard() {
+  const { weatherData } = useWeather();
+
   return (
     <section className="main-card-section">
       <div className="city-date-main-card">
-        <h1 className="title-main-card">Paris</h1>
+        <h1 className="title-main-card">{weatherData.name}</h1>
         <h2 className="date-main-card">Mardi 07 janvier 2024</h2>
       </div>
       <div className="main-card-container">
