@@ -10,10 +10,9 @@ interface cityDataTypes {
   lon: number;
   lat: number;
 }
+const apiKey = import.meta.env.VITE_API_KEY;
 
 function App() {
-  const apiKey = import.meta.env.VITE_API_KEY;
-
   const [city, setCity] = useState("" as string);
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
   const [weatherData, setWeatherData] = useState([] as []);
