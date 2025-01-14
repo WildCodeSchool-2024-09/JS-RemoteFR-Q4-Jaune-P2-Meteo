@@ -1,11 +1,11 @@
+import axios from "axios";
 import {
-  createContext,
   type ReactNode,
+  createContext,
   useContext,
   useEffect,
   useState,
 } from "react";
-import axios from "axios";
 
 interface cityDataTypes {
   lon: number;
