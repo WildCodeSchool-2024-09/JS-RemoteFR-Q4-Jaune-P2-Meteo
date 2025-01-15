@@ -18,6 +18,17 @@ interface propsTypes {
   handleFetchData: () => void;
   weatherData: {
     name: string;
+    main: {
+      feels_like: number;
+      humidity: number;
+      temp: number;
+    };
+    wind: {
+      speed: number;
+    };
+    weather: {
+      description: string;
+    }[];
   };
 }
 
@@ -31,8 +42,21 @@ const Weathercontext = createContext<propsTypes | null>(null);
 export function Weatherprovider({ children }: WeatherproviderType) {
   const [city, setCity] = useState("" as string);
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
-  const [weatherData, setWeatherData] = useState<{ name: string }>({
+  const [weatherData, setWeatherData] = useState({
     name: "",
+    main: {
+      feels_like: 0,
+      humidity: 0,
+      temp: 0,
+    },
+    wind: {
+      speed: 0,
+    },
+    weather: [
+      {
+        description: "",
+      },
+    ],
   });
   console.info(cityData, weatherData);
 
