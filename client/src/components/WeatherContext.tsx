@@ -14,7 +14,17 @@ interface cityDataTypes {
 
 interface weatherDataTypes {
   name?: string;
+  weather: [
+    {
+      description: string;
+    },
+  ];
+  wind: {
+    speed: number;
+  };
   main: {
+    temp: number;
+    humidity: number;
     feels_like: number;
   };
 }
@@ -37,6 +47,7 @@ export function Weatherprovider({ children }: WeatherproviderType) {
   const [city, setCity] = useState("" as string);
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
   const [weatherData, setWeatherData] = useState({} as weatherDataTypes);
+
   console.info(cityData, weatherData);
 
   const handleFetchData = () => {

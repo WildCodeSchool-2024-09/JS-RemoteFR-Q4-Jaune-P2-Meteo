@@ -49,7 +49,7 @@ export default function MainCard() {
             />
 
             <p className="text-data-main-card">
-              Ressenti : {weatherData.main.feels_like}°
+              Ressenti : {Math.round(weatherData.main.feels_like)} °
             </p>
           </div>
           <div className="vent">
@@ -58,7 +58,9 @@ export default function MainCard() {
               height={icons[0].vent.height}
               width={icons[0].vent.width}
             />
-            <p className="text-data-main-card">Vent : 24 km/h</p>
+            <p className="text-data-main-card">
+              Vent : {Math.round(weatherData.wind.speed)} km/h
+            </p>
           </div>
           <div className="humidite">
             <SvgIcons
@@ -67,11 +69,18 @@ export default function MainCard() {
               width={icons[0].humidite.width}
             />
 
-            <p className="text-data-main-card">Humidité : 30%</p>
+            <p className="text-data-main-card">
+              Humidité : {Math.round(weatherData.main.humidity)}%
+            </p>
           </div>
         </div>
         <div className="right-card">
-          <p className="temperature-main-card">18°</p>
+          <p className="temperature-main-card">
+            {Math.round(weatherData.main.temp)}°
+          </p>
+          <p className="temp-description-main-card">
+            {weatherData.weather[0].description}
+          </p>
           <SvgIcons
             path={icons[0].templogo.path}
             height={icons[0].templogo.height}
