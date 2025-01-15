@@ -1,12 +1,12 @@
 import {
   Bar,
   BarChart,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
   LabelList,
   ReferenceLine,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 import "../styles/WeekTemp.css";
 import { useWeather } from "./WeatherContext";
@@ -63,7 +63,7 @@ export default function WeekTemp() {
             }}
           />
           <ReferenceLine y={0} stroke="#000" />
-          <Bar dataKey="temp" fill="#FFA500" barSize={40}>
+          <Bar dataKey="temp" fill="rgba(0, 0, 0, 0.36)" barSize={40}>
             <LabelList
               dataKey="temp"
               position="top"
