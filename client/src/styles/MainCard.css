@@ -71,3 +71,8 @@
   font-size: 3rem;
   font-weight: 500;
 }
+
+.conditions {
+  display: flex;
+  padding: 0.3rem;
+}
