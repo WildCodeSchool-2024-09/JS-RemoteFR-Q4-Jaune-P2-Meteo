@@ -12,13 +12,28 @@ interface cityDataTypes {
   lat: number;
 }
 
+interface weatherDataTypes {
+  name?: string;
+  weather: [
+    {
+      description: string;
+    },
+  ];
+  wind: {
+    speed: number;
+  };
+  main: {
+    temp: number;
+    humidity: number;
+    feels_like: number;
+  };
+}
+
 interface propsTypes {
   city: string;
   setCity: (city: string) => void;
   handleFetchData: () => void;
-  weatherData: {
-    name: string;
-  };
+  weatherData: weatherDataTypes;
 }
 
 interface WeatherproviderType {
@@ -31,12 +46,10 @@ const Weathercontext = createContext<propsTypes | null>(null);
 export function Weatherprovider({ children }: WeatherproviderType) {
   const [city, setCity] = useState("" as string);
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
-  const [weatherData, setWeatherData] = useState<{ name: string }>({
-    name: "",
-  });
+  const [weatherData, setWeatherData] = useState({} as weatherDataTypes);
   const [weatherDays, setWeatherDays] = useState(null);
 
-  console.info("3", weatherDays);
+  console.info(cityData, weatherData, weatherDays);
 
   const handleFetchData = () => {
     axios
@@ -84,6 +97,35 @@ export function Weatherprovider({ children }: WeatherproviderType) {
         });
     }
   }, [cityData]);
+
+  // Get user location
+
+  useEffect(() => {
+    const getUserLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const { latitude, longitude } = position.coords;
+          axios
+            .get(
+              `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=fr&appid=${apiKey}`,
+            )
+            .then((response) => setWeatherData(response.data))
+            .catch((error) => {
+              console.error(
+                "Erreur lors de la récupération des données météo :",
+                error,
+              );
+            });
+        });
+      } else {
+        console.error(
+          "La géolocalisation n'est pas supportée par ce navigateur.",
+        );
+      }
+    };
+
+    getUserLocation();
+  }, []);
 
   return (
     <Weathercontext.Provider

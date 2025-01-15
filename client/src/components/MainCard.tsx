@@ -1,4 +1,5 @@
 import "../styles/MainCard.css";
+import CurrentDate from "./CurrentDate";
 import SvgIcons from "./SvgIcons";
 import { useWeather } from "./WeatherContext";
 
@@ -29,11 +30,15 @@ const icons = [
 export default function MainCard() {
   const { weatherData } = useWeather();
 
+  if (!weatherData.name) {
+    return <div className="title-main-card">Cherchez une ville !</div>;
+  }
+
   return (
     <section className="main-card-section">
       <div className="city-date-main-card">
         <h1 className="title-main-card">{weatherData.name}</h1>
-        <h2 className="date-main-card">Mardi 07 janvier 2024</h2>
+        <CurrentDate />
       </div>
       <div className="main-card-container">
         <div className="left-card">
@@ -44,7 +49,9 @@ export default function MainCard() {
               width={icons[0].ressenti.width}
             />
 
-            <p className="text-data-main-card">Ressenti : 15°</p>
+            <p className="text-data-main-card">
+              Ressenti : {Math.round(weatherData.main.feels_like)} °
+            </p>
           </div>
           <div className="vent">
             <SvgIcons
@@ -52,7 +59,9 @@ export default function MainCard() {
               height={icons[0].vent.height}
               width={icons[0].vent.width}
             />
-            <p className="text-data-main-card">Vent : 24 km/h</p>
+            <p className="text-data-main-card">
+              Vent : {Math.round(weatherData.wind.speed)} km/h
+            </p>
           </div>
           <div className="humidite">
             <SvgIcons
@@ -61,11 +70,18 @@ export default function MainCard() {
               width={icons[0].humidite.width}
             />
 
-            <p className="text-data-main-card">Humidité : 30%</p>
+            <p className="text-data-main-card">
+              Humidité : {Math.round(weatherData.main.humidity)}%
+            </p>
           </div>
         </div>
         <div className="right-card">
-          <p className="temperature-main-card">18°</p>
+          <p className="temperature-main-card">
+            {Math.round(weatherData.main.temp)}°
+          </p>
+          <p className="temp-description-main-card">
+            {weatherData.weather[0].description}
+          </p>
           <SvgIcons
             path={icons[0].templogo.path}
             height={icons[0].templogo.height}
