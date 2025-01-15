@@ -12,24 +12,28 @@ interface cityDataTypes {
   lat: number;
 }
 
+interface weatherDataTypes {
+  name?: string;
+  weather: [
+    {
+      description: string;
+    },
+  ];
+  wind: {
+    speed: number;
+  };
+  main: {
+    temp: number;
+    humidity: number;
+    feels_like: number;
+  };
+}
+
 interface propsTypes {
   city: string;
   setCity: (city: string) => void;
   handleFetchData: () => void;
-  weatherData: {
-    name: string;
-    main: {
-      feels_like: number;
-      humidity: number;
-      temp: number;
-    };
-    wind: {
-      speed: number;
-    };
-    weather: {
-      description: string;
-    }[];
-  };
+  weatherData: weatherDataTypes;
 }
 
 interface WeatherproviderType {
@@ -42,22 +46,8 @@ const Weathercontext = createContext<propsTypes | null>(null);
 export function Weatherprovider({ children }: WeatherproviderType) {
   const [city, setCity] = useState("" as string);
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
-  const [weatherData, setWeatherData] = useState({
-    name: "",
-    main: {
-      feels_like: 0,
-      humidity: 0,
-      temp: 0,
-    },
-    wind: {
-      speed: 0,
-    },
-    weather: [
-      {
-        description: "",
-      },
-    ],
-  });
+  const [weatherData, setWeatherData] = useState({} as weatherDataTypes);
+
   console.info(cityData, weatherData);
 
   const handleFetchData = () => {
@@ -89,6 +79,35 @@ export function Weatherprovider({ children }: WeatherproviderType) {
         });
     }
   }, [cityData]);
+
+  // Get user location
+
+  useEffect(() => {
+    const getUserLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const { latitude, longitude } = position.coords;
+          axios
+            .get(
+              `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=fr&appid=${apiKey}`,
+            )
+            .then((response) => setWeatherData(response.data))
+            .catch((error) => {
+              console.error(
+                "Erreur lors de la récupération des données météo :",
+                error,
+              );
+            });
+        });
+      } else {
+        console.error(
+          "La géolocalisation n'est pas supportée par ce navigateur.",
+        );
+      }
+    };
+
+    getUserLocation();
+  }, []);
 
   return (
     <Weathercontext.Provider

@@ -30,6 +30,10 @@ const icons = [
 export default function MainCard() {
   const { weatherData } = useWeather();
 
+  if (!weatherData.name) {
+    return <div className="title-main-card">Cherchez une ville !</div>;
+  }
+
   return (
     <section className="main-card-section">
       <div className="city-date-main-card">
