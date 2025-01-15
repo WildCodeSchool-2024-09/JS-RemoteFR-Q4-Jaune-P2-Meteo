@@ -3,6 +3,10 @@
   margin: 0 auto;
   width: 250px;
   height: 40px;
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
   align-items: center;
   justify-content: space-around;
   border-radius: 10px;
