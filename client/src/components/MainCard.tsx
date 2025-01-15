@@ -29,6 +29,10 @@ const icons = [
 export default function MainCard() {
   const { weatherData } = useWeather();
 
+  if (!weatherData.name) {
+    return <div className="title-main-card">Cherchez une ville !</div>;
+  }
+
   return (
     <section className="main-card-section">
       <div className="city-date-main-card">
@@ -44,7 +48,9 @@ export default function MainCard() {
               width={icons[0].ressenti.width}
             />
 
-            <p className="text-data-main-card">Ressenti : 15°</p>
+            <p className="text-data-main-card">
+              Ressenti : {weatherData.main.feels_like}°
+            </p>
           </div>
           <div className="vent">
             <SvgIcons
