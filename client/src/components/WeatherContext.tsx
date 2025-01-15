@@ -48,7 +48,6 @@ export function Weatherprovider({ children }: WeatherproviderType) {
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
   const [weatherData, setWeatherData] = useState({} as weatherDataTypes);
   const [weatherDays, setWeatherDays] = useState(null);
-
   console.info(cityData, weatherData, weatherDays);
 
   const handleFetchData = () => {

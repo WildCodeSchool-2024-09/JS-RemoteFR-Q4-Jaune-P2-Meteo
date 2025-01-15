@@ -1,8 +1,7 @@
 .main-card-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
 }
 
 .city-date-main-card {
@@ -13,24 +12,27 @@
 }
 
 .title-main-card {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 500;
+  margin: 1rem;
 }
 
 .date-main-card {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 300;
+  margin-bottom: 1rem;
 }
 
 .main-card-container {
+  margin: 0 auto;
   padding: 1rem;
   width: 80%;
-  background: #636363a3;
+  background-color: rgba(0, 0, 0, 0.093);
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 1rem;
-  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .left-card {
