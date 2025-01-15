@@ -1,4 +1,5 @@
 import { Line, LineChart } from "recharts";
+import "../styles/WeekTemp.css";
 export default function WeekTemp() {
   const data = [
     { name: "Lundi", temp: 33, humidity: 80 },
@@ -10,14 +11,12 @@ export default function WeekTemp() {
     { name: "Dimanche", temp: 25, humidity: 45 },
   ];
   return (
-    <div>
-      <p>température de la semaine</p>
-      <div>
-        <LineChart width={300} height={300} data={data}>
-          <Line type="monotone" dataKey="temp" stroke="white" />
-          <Line type="monotone" dataKey="humidity" stroke="white" />
-        </LineChart>
-      </div>
+    <div className="week-temp">
+      <h2>température de la semaine</h2>
+      <LineChart width={350} height={250} data={data}>
+        <Line type="monotone" dataKey="temp" stroke="white" />
+        <Line type="monotone" dataKey="humidity" stroke="white" />
+      </LineChart>
     </div>
   );
 }
