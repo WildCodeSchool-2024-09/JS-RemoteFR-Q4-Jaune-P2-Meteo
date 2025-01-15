@@ -1,4 +1,5 @@
 import "../styles/MainCard.css";
+import CurrentDate from "./CurrentDate";
 import SvgIcons from "./SvgIcons";
 import { useWeather } from "./WeatherContext";
 
@@ -33,7 +34,7 @@ export default function MainCard() {
     <section className="main-card-section">
       <div className="city-date-main-card">
         <h1 className="title-main-card">{weatherData.name}</h1>
-        <h2 className="date-main-card">Mardi 07 janvier 2024</h2>
+        <CurrentDate />
       </div>
       <div className="main-card-container">
         <div className="left-card">
