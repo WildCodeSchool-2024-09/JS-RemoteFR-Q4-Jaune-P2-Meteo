@@ -49,3 +49,15 @@ interface WeatherTypes {
   };
   weatherDays: WeatherDay[];
 }
+
+interface DayTypes {
+  day: {
+    dt_txt: string;
+    weather: {
+      icon: string;
+    }[];
+    main: {
+      temp: number;
+    };
+  };
+}

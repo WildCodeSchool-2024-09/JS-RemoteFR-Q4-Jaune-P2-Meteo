@@ -1,17 +1,6 @@
 import "../styles/Cardhours.css";
 
-interface weatherDaysTypes {
-  day: {
-    dt_txt: string;
-    weather: {
-      icon: string;
-    }[];
-    main: {
-      temp: number;
-    };
-  };
-}
-export default function Cardhours({ day }: weatherDaysTypes) {
+export default function Cardhours({ day }: DayTypes) {
   const dateString = day.dt_txt;
   const time = dateString.split(" ")[1].substring(0, 5);
   return (
