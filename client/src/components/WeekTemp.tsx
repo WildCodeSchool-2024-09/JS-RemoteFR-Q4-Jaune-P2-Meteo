@@ -32,7 +32,7 @@ export default function WeekTemp() {
       <ResponsiveContainer width="100%" height={500}>
         <BarChart
           data={dailyWeather}
-          margin={{ top: 30, right: 5, left: -15, bottom: 50 }}
+          margin={{ top: 30, right: 10, left: -20, bottom: 50 }}
         >
           <XAxis
             dataKey="date"
@@ -63,7 +63,7 @@ export default function WeekTemp() {
             }}
           />
           <ReferenceLine y={0} stroke="#000" />
-          <Bar dataKey="temp" fill="rgba(0, 0, 0, 0.36)" barSize={40}>
+          <Bar dataKey="temp" fill="rgba(0, 0, 0, 0.36)" barSize={30}>
             <LabelList
               dataKey="temp"
               position="top"
