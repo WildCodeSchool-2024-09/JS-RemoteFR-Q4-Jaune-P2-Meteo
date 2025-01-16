@@ -1,22 +1,78 @@
-import { Line, LineChart } from "recharts";
+import {
+  Bar,
+  BarChart,
+  LabelList,
+  ReferenceLine,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import "../styles/WeekTemp.css";
+import { useWeather } from "./WeatherContext";
+
 export default function WeekTemp() {
-  const data = [
-    { name: "Lundi", temp: 33, humidity: 80 },
-    { name: "Mardi", temp: 30, humidity: 70 },
-    { name: "Mercredi", temp: 29, humidity: 89 },
-    { name: "Jeudi", temp: 28, humidity: 65 },
-    { name: "Vendredi", temp: 27, humidity: 40 },
-    { name: "Samedi", temp: 26, humidity: 60 },
-    { name: "Dimanche", temp: 25, humidity: 45 },
-  ];
+  const { weatherDays } = useWeather();
+
+  if (!weatherDays) {
+    return <div>Loading...</div>;
+  }
+
+  // Filtrer les données pour obtenir une valeur par jour à midi (12:00)
+  const dailyWeather = weatherDays
+    .filter((day) => new Date(day.dt_txt).getHours() === 12)
+    .map((day) => ({
+      date: day.dt_txt,
+      temp: Math.round(day.main.temp), // Arrondir la température
+    }));
+
   return (
     <div className="week-temp">
-      <h2>température de la semaine</h2>
-      <LineChart width={350} height={250} data={data}>
-        <Line type="monotone" dataKey="temp" stroke="white" />
-        <Line type="monotone" dataKey="humidity" stroke="white" />
-      </LineChart>
+      <h2>Température de la semaine</h2>
+      <ResponsiveContainer width="100%" height={500}>
+        <BarChart
+          data={dailyWeather}
+          margin={{ top: 30, right: 10, left: -20, bottom: 50 }}
+        >
+          <XAxis
+            dataKey="date"
+            tickFormatter={(date) =>
+              new Date(date).toLocaleDateString("fr-FR", {
+                day: "2-digit",
+                month: "2-digit",
+              })
+            }
+            stroke="#fff"
+            tick={{ fill: "#fff" }}
+          />
+          <YAxis domain={[0, "auto"]} stroke="#fff" tick={{ fill: "#fff" }} />
+          <Tooltip
+            formatter={(value) => [`${value} °C`, "Température"]}
+            labelFormatter={(label) =>
+              new Date(label).toLocaleDateString("fr-FR", {
+                weekday: "long",
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+              })
+            }
+            contentStyle={{
+              backgroundColor: "#333",
+              borderColor: "#333",
+              color: "#fff",
+            }}
+          />
+          <ReferenceLine y={0} stroke="#000" />
+          <Bar dataKey="temp" fill="rgba(0, 0, 0, 0.36)" barSize={30}>
+            <LabelList
+              dataKey="temp"
+              position="top"
+              fill="#fff"
+              formatter={(value: number) => `${value}°C`}
+            />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }

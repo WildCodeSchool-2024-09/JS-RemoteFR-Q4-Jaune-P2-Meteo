@@ -16,7 +16,7 @@ export default function Home() {
       <MainCard />
       <div className="container-hours">
         {weatherDays.slice(0, 9).map((day) => (
-          <Cardhours key={day.weather[0].id} day={day} />
+          <Cardhours key={day.dt_txt} day={day} />
         ))}
       </div>
       <CardAlert />
