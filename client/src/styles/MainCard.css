@@ -76,3 +76,10 @@
   display: flex;
   padding: 0.3rem;
 }
+
+.btn-favorites {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  border-style: none;
+}

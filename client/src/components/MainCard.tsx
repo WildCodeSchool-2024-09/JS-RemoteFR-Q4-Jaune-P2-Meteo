@@ -43,7 +43,7 @@ export default function MainCard() {
     if (
       favorites.some((fav: { name: string }) => fav.name === weatherData.name)
     ) {
-      alert("Cette ville est déjà dans vos favoris !");
+      alert("Cette ville est déjà dans vos favoris");
       return;
     }
 
@@ -115,11 +115,11 @@ export default function MainCard() {
           </p>
 
           <button
-            className="add-to-favorites"
+            className="btn-favorites"
             onClick={addToFavorites}
             type="button"
           >
-            Fav
+            Ajouter
           </button>
         </div>
       </div>
