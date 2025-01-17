@@ -25,10 +25,37 @@ const icons = [
       height: "48px",
       path: "M450-770v-150h60v150h-60Zm256 106-42-43 106-106 42 43-106 106Zm64 214v-60h150v60H770Zm1 302L665-254l43-43 106 106-43 43ZM254-664 148-770l42-42 106 106-42 42Zm-14 484h180q33.33 0 56.67-23.26Q500-226.53 500-259.76 500-293 477.24-317q-22.77-24-56.24-24h-44l-18-41q-15.15-35.75-47.6-56.88Q278.95-460 240-460q-58.33 0-99.17 40.76-40.83 40.77-40.83 99Q100-262 140.83-221q40.84 41 99.17 41Zm0 60q-83 0-141.5-58.5T40-320q0-83 58.5-141.5T240-520q57.74 0 105.37 32.5T416-401q60.12 0 101.06 43.59Q558-313.82 558-253q-5 56-44.03 94.5Q474.93-120 420-120H240Zm318-133q-3-15.38-6-30t-6-30q52-20 83-65.54 31-45.54 31-101.32 0-75.14-52.5-127.64T480-660q-67.22 0-117.63 42.67Q311.96-574.65 303-509q-16-3-31.5-5.5T240-520q14-88 82.5-144T480-720q100 0 170 70t70 170.34Q720-402 675.5-340T558-253Zm-77-227Z",
     },
+    conditions: {
+      width: "24px",
+      height: "24px",
+      path: "M500-40q-25 0-42.5-17T440-99q0-12 4.5-23t13.5-19l42-39 42 39q9 8 13.5 19t4.5 23q0 25-17.5 42T500-40Zm-138-60-42-42 118-118 42 42-118 118Zm258-60-60-60 60-60 60 60-60 60Zm-360 0-60-60 60-60 60 60-60 60Zm40-160q-91 0-155.5-64.5T80-540q0-83 55-145t136-73q32-57 87.5-89.5T480-880q90 0 156.5 57.5T717-679q69 6 116 57t47 122q0 75-52.5 127.5T700-320H300Zm0-80h400q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-40q0-66-47-113t-113-47q-48 0-87.5 26T333-704l-10 24h-25q-57 2-97.5 42.5T160-540q0 58 41 99t99 41Zm180-200Z",
+    },
   },
 ];
 export default function MainCard() {
   const { weatherData } = useWeather();
+
+  // fonction pour ajouter aux fav
+  const addToFavorites = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    // vérifie si la ville est déjà dans les fav
+    if (
+      favorites.some((fav: { name: string }) => fav.name === weatherData.name)
+    ) {
+      alert("Cette ville est déjà dans vos favoris");
+      return;
+    }
+
+    // ajoute la ville aux fav si elle n'y est pas
+    favorites.push(weatherData);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    alert(`${weatherData.name} a été ajoutée aux favoris !`);
+  };
+
+  if (!weatherData.name) {
+    return <div className="title-main-card">Cherchez une ville !</div>;
+  }
 
   return (
     <section className="main-card-section">
@@ -70,19 +97,30 @@ export default function MainCard() {
               Humidité : {Math.round(weatherData.main.humidity)}%
             </p>
           </div>
+          <div className="conditions">
+            <SvgIcons
+              path={icons[0].conditions.path}
+              height={icons[0].conditions.height}
+              width={icons[0].conditions.width}
+            />
+
+            <p className="text-data-main-card">
+              Conditions : {weatherData.weather[0].description}
+            </p>
+          </div>
         </div>
         <div className="right-card">
           <p className="temperature-main-card">
             {Math.round(weatherData.main.temp)}°
           </p>
-          <p className="temp-description-main-card">
-            {weatherData.weather[0].description}
-          </p>
-          <SvgIcons
-            path={icons[0].templogo.path}
-            height={icons[0].templogo.height}
-            width={icons[0].templogo.width}
-          />
+
+          <button
+            className="btn-favorites"
+            onClick={addToFavorites}
+            type="button"
+          >
+            Ajouter
+          </button>
         </div>
       </div>
     </section>

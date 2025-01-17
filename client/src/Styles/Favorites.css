@@ -1,0 +1,26 @@
+.favorites-section {
+  margin: 0 auto;
+  padding: 1rem;
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.093);
+  display: flex;
+  align-items: center;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.favorites-section h2 {
+  padding-top: 0.5rem;
+}
+
+.favorites-section p {
+  padding-top: 0.5rem;
+}
+
+.remove-favorite-button {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  padding: 8px;
+  border-style: none;
+}
