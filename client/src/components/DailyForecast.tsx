@@ -1,6 +1,6 @@
-import { useWeather } from "./WeatherContext";
 import "../styles/DailyForecast.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useWeather } from "./WeatherContext";
 
 export default function DailyForecast() {
   const { weatherDays } = useWeather();
@@ -22,32 +22,41 @@ export default function DailyForecast() {
 
   const [selectedDay, setSelectedDay] = useState(dailyWeather[0]);
 
+  useEffect(() => {
+    if (!selectedDay) {
+      setSelectedDay(dailyWeather[0]);
+    }
+  }, [dailyWeather, selectedDay]);
+
   const handleDayClick = (day: WeatherDay) => {
     setSelectedDay(day);
   };
 
   return (
     <article>
-      <div className="main-info">
-        <div className="left-side">
-          <p className="desc">{selectedDay.description}</p>
-          <p className="temp">{selectedDay.temp}°C</p>
-          <p className="min-max">
-            {selectedDay.temp_min}°C / {selectedDay.temp_max}°C
-          </p>
+      {selectedDay && (
+        <div className="main-info">
+          <div className="left-side">
+            <p className="desc">{selectedDay.description}</p>
+            <p className="temp">{selectedDay.temp}°C</p>
+            <p className="min-max">
+              {selectedDay.temp_min}°C / {selectedDay.temp_max}°C
+            </p>
+          </div>
+          <div className="right-side">
+            <p className="time">{selectedDay.date}</p>
+            <p>Humidity: {selectedDay.humidity}%</p>
+            <p>Wind: {selectedDay.windSpeed} km/h</p>
+          </div>
         </div>
-        <div className="right-side">
-          <p className="time">{selectedDay.date}</p>
-          <p>Humidity: {selectedDay.humidity}%</p>
-          <p>Wind: {selectedDay.windSpeed} km/h</p>
-        </div>
-      </div>
+      )}
       <div className="day-list">
         {dailyWeather.map((day) => (
           <button
             type="button"
             key={day.date}
             onClick={() => handleDayClick(day as WeatherDay)}
+            className={selectedDay?.date === day.date ? "selected" : ""}
           >
             {day.date}
           </button>
@@ -56,7 +65,3 @@ export default function DailyForecast() {
     </article>
   );
 }
-
-/* {dailyWeather.map((day) => (
-        <DailyCard key={day.date} day={day} />
-      ))} */

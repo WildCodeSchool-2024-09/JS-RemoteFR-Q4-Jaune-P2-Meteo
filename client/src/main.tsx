@@ -2,7 +2,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Weatherprovider } from "./components/WeatherContext";
+import { useWeather, Weatherprovider } from "./components/WeatherContext";
 
 /* ************************************************************************* */
 
