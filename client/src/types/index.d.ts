@@ -61,3 +61,13 @@ interface DayTypes {
     };
   };
 }
+
+interface WeatherDay {
+  date: string;
+  temp: number;
+  humidity: number;
+  description: string;
+  windSpeed: number;
+  temp_min: number;
+  temp_max: number;
+}
