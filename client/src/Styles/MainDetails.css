@@ -1,0 +1,64 @@
+.background {
+  background-color: rgba(0, 0, 0, 0.093);
+  padding: 1rem;
+  margin: 0 1rem;
+  border-radius: 2rem;
+}
+
+.background p {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.degré {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.minmax {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.minmax p {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.MainDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  margin: 0 1rem;
+}
+
+.météo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.météo2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.trait {
+  border: 1px solid rgba(255, 255, 255, 0.267);
+  margin: 0 5rem;
+}
+
+.description p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1rem;
+  margin: 1rem;
+}
+
+.description span {
+  font-weight: 600;
+}

@@ -8,8 +8,13 @@ interface weatherDataTypes {
   weather: [
     {
       description: string;
+      icon: string;
     },
   ];
+  sys: {
+    sunrise: number;
+    sunset: number;
+  };
   wind: {
     speed: number;
   };
@@ -17,6 +22,8 @@ interface weatherDataTypes {
     temp: number;
     humidity: number;
     feels_like: number;
+    temp_min: number;
+    temp_max: number;
   };
 }
 
