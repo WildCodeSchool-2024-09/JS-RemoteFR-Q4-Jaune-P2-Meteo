@@ -1,44 +1,5 @@
 import axios from "axios";
-import {
-  type ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-
-interface cityDataTypes {
-  lon: number;
-  lat: number;
-}
-
-interface weatherDataTypes {
-  name?: string;
-  weather: [
-    {
-      description: string;
-    },
-  ];
-  wind: {
-    speed: number;
-  };
-  main: {
-    temp: number;
-    humidity: number;
-    feels_like: number;
-  };
-}
-
-interface propsTypes {
-  city: string;
-  setCity: (city: string) => void;
-  handleFetchData: () => void;
-  weatherData: weatherDataTypes;
-}
-
-interface WeatherproviderType {
-  children: ReactNode;
-}
+import { createContext, useContext, useEffect, useState } from "react";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const Weathercontext = createContext<propsTypes | null>(null);
@@ -47,7 +8,8 @@ export function Weatherprovider({ children }: WeatherproviderType) {
   const [city, setCity] = useState("" as string);
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
   const [weatherData, setWeatherData] = useState({} as weatherDataTypes);
-  const [weatherDays, setWeatherDays] = useState(null);
+  const [weatherDays, setWeatherDays] = useState([] as WeatherDay[]);
+
   console.info(cityData, weatherData, weatherDays);
 
   const handleFetchData = () => {
@@ -115,6 +77,17 @@ export function Weatherprovider({ children }: WeatherproviderType) {
                 error,
               );
             });
+          axios
+            .get(
+              `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&lang=fr&appid=${apiKey}`,
+            )
+            .then((response) => setWeatherDays(response.data.list))
+            .catch((error) => {
+              console.error(
+                "Erreur lors de la récupération des données météo :",
+                error,
+              );
+            });
         });
       } else {
         console.error(
@@ -128,7 +101,7 @@ export function Weatherprovider({ children }: WeatherproviderType) {
 
   return (
     <Weathercontext.Provider
-      value={{ city, setCity, weatherData, handleFetchData }}
+      value={{ city, setCity, weatherData, handleFetchData, weatherDays }}
     >
       {children}
     </Weathercontext.Provider>

@@ -1,11 +1,13 @@
 .nav-container {
   display: flex;
   margin: 0 auto;
-  position: fixed;
-  bottom: 1rem;
-  left: 70px;
   width: 250px;
   height: 40px;
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  align-items: center;
   justify-content: space-around;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.093);

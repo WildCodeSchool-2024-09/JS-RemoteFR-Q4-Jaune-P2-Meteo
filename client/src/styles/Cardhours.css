@@ -1,15 +1,18 @@
 .container-hours {
   display: flex;
-  justify-content: space-evenly;
-  min-width: 100vw;
-  margin-bottom: 1rem;
+  overflow-x: scroll;
+  gap: 1.5rem;
+  margin: 0 auto;
   font-weight: 200;
+  width: 77vw;
 }
 
 .card-hour {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  width: 5rem;
-  height: 7rem;
+  width: 5.3rem;
+  height: 7.3rem;
   background-color: rgba(0, 0, 0, 0.093);
   border-radius: 20px;
   padding: 1rem 1rem;
