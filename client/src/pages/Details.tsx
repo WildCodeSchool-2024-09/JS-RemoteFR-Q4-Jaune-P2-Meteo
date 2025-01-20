@@ -2,6 +2,7 @@ import DailyForecast from "../components/DailyForecast";
 
 import MainDetails from "../components/MainDetails";
 
+import HumidityDetails from "../components/HumidityDetails";
 import { useWeather } from "../components/WeatherContext";
 
 export default function Details() {
@@ -14,9 +15,9 @@ export default function Details() {
   return (
     <>
       <h1 className="title-main-card">{weatherData.name}</h1>
-
       <MainDetails />
       <DailyForecast />
+      <HumidityDetails />
     </>
   );
 }
