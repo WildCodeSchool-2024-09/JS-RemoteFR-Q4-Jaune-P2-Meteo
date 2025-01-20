@@ -10,7 +10,12 @@ export default function Home() {
   const { weatherData, weatherDays } = useWeather();
 
   if (!weatherData.name || !weatherDays) {
-    return <div className="title-main-card">Cherchez une ville !</div>;
+    return (
+      <>
+        <InputSearch />
+        <div className="title-main-card">Cherchez une ville !</div>
+      </>
+    );
   }
 
   return (

@@ -16,20 +16,32 @@ interface FavoritesTypes {
 
 export default function Favorites() {
   const [favorites, setFavorites] = useState([] as FavoritesTypes[]);
+  const currentUser = localStorage.getItem("currentUser") || "Anonymous";
 
   useEffect(() => {
-    // charge les fav depuis le localStorage
-    const storedFavorites = JSON.parse(
-      localStorage.getItem("favorites") || "[]",
+    // Charger les favoris spécifiques à l'utilisateur
+    const allUserFavorites = JSON.parse(
+      localStorage.getItem("userFavorites") || "{}",
     );
-    setFavorites(storedFavorites);
-  }, []);
+    const userFavorites = allUserFavorites[currentUser] || [];
+    setFavorites(userFavorites);
+  }, [currentUser]);
 
-  // supp un favori et met à jour les fav
   const removeFavorite = (name: string) => {
-    const updateFavorites = favorites.filter((fav) => fav.name !== name);
-    setFavorites(updateFavorites);
-    localStorage.setItem("favorites", JSON.stringify(updateFavorites));
+    const allUserFavorites = JSON.parse(
+      localStorage.getItem("userFavorites") || "{}",
+    );
+
+    // Filtrer les favoris de l'utilisateur actuel
+    allUserFavorites[currentUser] = allUserFavorites[currentUser].filter(
+      (fav: FavoritesTypes) => fav.name !== name,
+    );
+
+    // Mettre à jour le localStorage
+    localStorage.setItem("userFavorites", JSON.stringify(allUserFavorites));
+
+    // Mettre à jour l'état local
+    setFavorites(allUserFavorites[currentUser]);
     alert(`${name} a été supprimée des favoris !`);
   };
 

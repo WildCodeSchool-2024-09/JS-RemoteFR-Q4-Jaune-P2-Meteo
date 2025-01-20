@@ -62,3 +62,59 @@ label {
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
+.existing-users {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.existing-users p {
+  color: #333;
+}
+
+.users-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.user-button {
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+}
+
+.user-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.delete-user-button {
+  padding: 0.4rem 0.6rem;
+  background-color: rgba(255, 59, 59, 0.2);
+  border: 1px solid rgba(255, 59, 59, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
