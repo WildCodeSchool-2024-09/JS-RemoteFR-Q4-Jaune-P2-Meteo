@@ -2,8 +2,8 @@ import DailyForecast from "../components/DailyForecast";
 
 import MainDetails from "../components/MainDetails";
 
-import { useWeather } from "../components/WeatherContext";
 import HumidityDetails from "../components/HumidityDetails";
+import { useWeather } from "../components/WeatherContext";
 
 export default function Details() {
   const { weatherData, weatherDays } = useWeather();
