@@ -2,6 +2,7 @@ import CardAlert from "../components/CardAlert";
 import Cardhours from "../components/Cardhours";
 import MainCard from "../components/MainCard";
 import { useWeather } from "../components/WeatherContext";
+
 import WeekTemp from "../components/WeekTemp";
 
 export default function Home() {
@@ -14,12 +15,12 @@ export default function Home() {
   return (
     <>
       <MainCard />
+      <CardAlert />
       <div className="container-hours">
         {weatherDays.slice(0, 9).map((day) => (
           <Cardhours key={day.dt_txt} day={day} />
         ))}
       </div>
-      <CardAlert />
       <WeekTemp />
     </>
   );
