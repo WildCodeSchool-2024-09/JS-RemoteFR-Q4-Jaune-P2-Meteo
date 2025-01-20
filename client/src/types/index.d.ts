@@ -80,3 +80,14 @@ interface WeatherDay {
   temp_min: number;
   temp_max: number;
 }
+
+interface FavoritesTypes {
+  name: string;
+  main: {
+    temp: number;
+    humidity: number;
+  };
+  wind: {
+    speed: number;
+  };
+}

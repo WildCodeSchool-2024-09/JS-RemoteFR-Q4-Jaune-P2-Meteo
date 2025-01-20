@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/FormPage.css";
-import { useWeather } from "../components/WeatherContext";
 import { useEffect, useState } from "react";
+import { useWeather } from "../components/WeatherContext";
 
 export default function FormPage() {
   const navigate = useNavigate();
   const { name, setName } = useWeather();
-  const [existingUsers, setExistingUsers] = useState<string[]>([]);
+  const [existingUsers, setExistingUsers] = useState([] as string[]);
 
   useEffect(() => {
     const allUserFavorites = JSON.parse(

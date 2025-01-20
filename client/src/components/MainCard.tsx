@@ -35,7 +35,6 @@ const icons = [
 export default function MainCard() {
   const { weatherData, name } = useWeather();
 
-  // fonction pour ajouter aux fav
   const addToFavorites = () => {
     const currentUser = localStorage.getItem("currentUser") || "Anonymous";
     // Récupérer tous les favoris par utilisateur
@@ -43,7 +42,7 @@ export default function MainCard() {
       localStorage.getItem("userFavorites") || "{}",
     );
 
-    // Initialiser un tableau vide pour l'utilisateur s'il n'existe pas
+    // Crée un tableau vide pour l'utilisateur s'il n'existe pas
     if (!allUserFavorites[currentUser]) {
       allUserFavorites[currentUser] = [];
     }
@@ -51,7 +50,7 @@ export default function MainCard() {
     // Vérifier si la ville est déjà dans les favoris de cet utilisateur
     if (
       allUserFavorites[currentUser].some(
-        (fav: any) => fav.name === weatherData.name,
+        (fav: { name: string }) => fav.name === weatherData.name,
       )
     ) {
       alert("Cette ville est déjà dans vos favoris");
