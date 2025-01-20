@@ -1,6 +1,8 @@
 import CardAlert from "../components/CardAlert";
 import Cardhours from "../components/Cardhours";
+import InputSearch from "../components/InputSearch";
 import MainCard from "../components/MainCard";
+import Navbar from "../components/NavBar";
 import { useWeather } from "../components/WeatherContext";
 import WeekTemp from "../components/WeekTemp";
 
@@ -13,6 +15,7 @@ export default function Home() {
 
   return (
     <>
+      <InputSearch />
       <MainCard />
       <div className="container-hours">
         {weatherDays.slice(0, 9).map((day) => (
@@ -21,6 +24,7 @@ export default function Home() {
       </div>
       <CardAlert />
       <WeekTemp />
+      <Navbar />
     </>
   );
 }

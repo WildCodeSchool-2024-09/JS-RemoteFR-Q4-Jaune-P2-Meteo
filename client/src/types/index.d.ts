@@ -33,6 +33,8 @@ interface propsTypes {
   handleFetchData: () => void;
   weatherData: weatherDataTypes;
   weatherDays: weatherDaysTypes[];
+  name: string;
+  setName: (name: string) => void;
 }
 
 interface WeatherproviderType {

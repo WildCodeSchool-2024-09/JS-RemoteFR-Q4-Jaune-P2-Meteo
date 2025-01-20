@@ -33,7 +33,7 @@ const icons = [
   },
 ];
 export default function MainCard() {
-  const { weatherData } = useWeather();
+  const { weatherData, name } = useWeather();
 
   // fonction pour ajouter aux fav
   const addToFavorites = () => {
@@ -60,6 +60,7 @@ export default function MainCard() {
   return (
     <section className="main-card-section">
       <div className="city-date-main-card">
+        <p className="name-main-card">{name ? `Bienvenue ${name} !` : null}</p>
         <h1 className="title-main-card">{weatherData.name}</h1>
         <CurrentDate />
       </div>

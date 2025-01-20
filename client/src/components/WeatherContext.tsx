@@ -9,6 +9,7 @@ export function Weatherprovider({ children }: WeatherproviderType) {
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
   const [weatherData, setWeatherData] = useState({} as weatherDataTypes);
   const [weatherDays, setWeatherDays] = useState([] as WeatherDay[]);
+  const [name, setName] = useState("" as string);
 
   console.info(cityData, weatherData, weatherDays);
 
@@ -101,7 +102,15 @@ export function Weatherprovider({ children }: WeatherproviderType) {
 
   return (
     <Weathercontext.Provider
-      value={{ city, setCity, weatherData, handleFetchData, weatherDays }}
+      value={{
+        city,
+        setCity,
+        weatherData,
+        handleFetchData,
+        weatherDays,
+        name,
+        setName,
+      }}
     >
       {children}
     </Weathercontext.Provider>

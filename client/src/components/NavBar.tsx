@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <>
       <div className="nav-container">
-        <NavLink to={"/"} className="button">
+        <NavLink to={"/Weather"} className="button">
           <svg
             className="icon"
             stroke="currentColor"
