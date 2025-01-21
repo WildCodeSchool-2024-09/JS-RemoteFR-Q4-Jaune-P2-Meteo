@@ -1,4 +1,5 @@
 import DailyForecast from "../components/DailyForecast";
+import HumidityDetails from "../components/HumidityDetails";
 import InputSearch from "../components/InputSearch";
 import MainDetails from "../components/MainDetails";
 import Navbar from "../components/NavBar";
@@ -17,6 +18,7 @@ export default function Details() {
       <h1 className="title-main-card">{weatherData.name}</h1>
       <MainDetails />
       <DailyForecast />
+      <HumidityDetails />
       <Navbar />
     </>
   );
