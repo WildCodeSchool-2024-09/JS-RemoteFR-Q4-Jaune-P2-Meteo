@@ -9,6 +9,7 @@ interface weatherDataTypes {
     {
       description: string;
       icon: string;
+      main: string;
     },
   ];
   sys: {
