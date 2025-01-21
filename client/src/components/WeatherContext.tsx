@@ -26,13 +26,37 @@ export function Weatherprovider({ children }: WeatherproviderType) {
       });
   };
 
+  const changeBackground = () => {
+    const weatherCondition = weatherData.weather[0].main;
+    if (weatherCondition === "Clear") {
+      document.body.style.backgroundImage = "url('/assets/images/BG-Main.jpg')";
+      alert("c'est encore mieux avec des lunettes de soleil !");
+    } else if (weatherCondition === "Rain") {
+      document.body.style.backgroundImage = "url('/assets/images/rain.jpg')";
+      alert("pensez à prendre votre parapluie ! ");
+    } else if (weatherCondition === "Snow") {
+      document.body.style.backgroundImage = "url('/assets/images/snow.jpg')";
+      alert("Il est temps de rajouter bonnets et gants !");
+    } else if (weatherCondition === "Clouds") {
+      document.body.style.backgroundImage = "url('/assets/images/clouds.jpg')";
+      alert("Il faudra sortir le manteau aujourd'hui !");
+    } else if (weatherCondition === "Mist") {
+      document.body.style.backgroundImage = "url('/assets/images/mist.jpg')";
+      alert("Prevoyez les feux de brouillard !");
+    } else {
+      document.body.style.backgroundImage = "url('/assets/images/BG-Main.jpg')";
+    }
+  };
+
   useEffect(() => {
     if (cityData.length) {
       axios
         .get(
           `https://api.openweathermap.org/data/2.5/weather?lat=${cityData[0].lat}&lon=${cityData[0].lon}&units=metric&lang=fr&appid=${apiKey}`,
         )
-        .then((response) => setWeatherData(response.data))
+        .then((response) => {
+          setWeatherData(response.data);
+        })
         .catch((error) => {
           console.error(
             "Erreur lors de la récupération des données météo :",
@@ -41,6 +65,12 @@ export function Weatherprovider({ children }: WeatherproviderType) {
         });
     }
   }, [cityData]);
+
+  useEffect(() => {
+    if (weatherData?.weather) {
+      changeBackground();
+    }
+  }, [weatherData]);
 
   //implantation du useEffect pour le jour par jour
   useEffect(() => {
@@ -101,7 +131,14 @@ export function Weatherprovider({ children }: WeatherproviderType) {
 
   return (
     <Weathercontext.Provider
-      value={{ city, setCity, weatherData, handleFetchData, weatherDays }}
+      value={{
+        city,
+        setCity,
+        weatherData,
+        handleFetchData,
+        weatherDays,
+        changeBackground,
+      }}
     >
       {children}
     </Weathercontext.Provider>
