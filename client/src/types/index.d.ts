@@ -9,6 +9,7 @@ interface weatherDataTypes {
     {
       description: string;
       icon: string;
+      main: string;
     },
   ];
   sys: {
@@ -33,6 +34,8 @@ interface propsTypes {
   handleFetchData: () => void;
   weatherData: weatherDataTypes;
   weatherDays: weatherDaysTypes[];
+  name: string;
+  setName: (name: string) => void;
 }
 
 interface WeatherproviderType {
@@ -77,4 +80,15 @@ interface WeatherDay {
   windSpeed: number;
   temp_min: number;
   temp_max: number;
+}
+
+interface FavoritesTypes {
+  name: string;
+  main: {
+    temp: number;
+    humidity: number;
+  };
+  wind: {
+    speed: number;
+  };
 }

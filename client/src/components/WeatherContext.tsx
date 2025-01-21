@@ -9,6 +9,7 @@ export function Weatherprovider({ children }: WeatherproviderType) {
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
   const [weatherData, setWeatherData] = useState({} as weatherDataTypes);
   const [weatherDays, setWeatherDays] = useState([] as WeatherDay[]);
+  const [name, setName] = useState("" as string);
 
   console.info(cityData, weatherData, weatherDays);
 
@@ -24,28 +25,6 @@ export function Weatherprovider({ children }: WeatherproviderType) {
           error,
         );
       });
-  };
-
-  const changeBackground = () => {
-    const weatherCondition = weatherData.weather[0].main;
-    if (weatherCondition === "Clear") {
-      document.body.style.backgroundImage = "url('/assets/images/BG-Main.jpg')";
-      alert("c'est encore mieux avec des lunettes de soleil !");
-    } else if (weatherCondition === "Rain") {
-      document.body.style.backgroundImage = "url('/assets/images/rain.jpg')";
-      alert("pensez à prendre votre parapluie ! ");
-    } else if (weatherCondition === "Snow") {
-      document.body.style.backgroundImage = "url('/assets/images/snow.jpg')";
-      alert("Il est temps de rajouter bonnets et gants !");
-    } else if (weatherCondition === "Clouds") {
-      document.body.style.backgroundImage = "url('/assets/images/clouds.jpg')";
-      alert("Il faudra sortir le manteau aujourd'hui !");
-    } else if (weatherCondition === "Mist") {
-      document.body.style.backgroundImage = "url('/assets/images/mist.jpg')";
-      alert("Prevoyez les feux de brouillard !");
-    } else {
-      document.body.style.backgroundImage = "url('/assets/images/BG-Main.jpg')";
-    }
   };
 
   useEffect(() => {
@@ -68,7 +47,28 @@ export function Weatherprovider({ children }: WeatherproviderType) {
 
   useEffect(() => {
     if (weatherData?.weather) {
-      changeBackground();
+      const weatherCondition = weatherData.weather[0].main;
+      if (weatherCondition === "Clear") {
+        document.body.style.backgroundImage =
+          "url('/assets/images/BG-Main.jpg')";
+        alert("c'est encore mieux avec des lunettes de soleil !");
+      } else if (weatherCondition === "Rain") {
+        document.body.style.backgroundImage = "url('/assets/images/rain.jpg')";
+        alert("pensez à prendre votre parapluie ! ");
+      } else if (weatherCondition === "Snow") {
+        document.body.style.backgroundImage = "url('/assets/images/snow.jpg')";
+        alert("Il est temps de rajouter bonnets et gants !");
+      } else if (weatherCondition === "Clouds") {
+        document.body.style.backgroundImage =
+          "url('/assets/images/clouds.jpg')";
+        alert("Il faudra sortir le manteau aujourd'hui !");
+      } else if (weatherCondition === "Mist") {
+        document.body.style.backgroundImage = "url('/assets/images/mist.jpg')";
+        alert("Prevoyez les feux de brouillard !");
+      } else {
+        document.body.style.backgroundImage =
+          "url('/assets/images/BG-Main.jpg')";
+      }
     }
   }, [weatherData]);
 
@@ -137,7 +137,8 @@ export function Weatherprovider({ children }: WeatherproviderType) {
         weatherData,
         handleFetchData,
         weatherDays,
-        changeBackground,
+        name,
+        setName,
       }}
     >
       {children}

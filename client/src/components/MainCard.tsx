@@ -33,23 +33,33 @@ const icons = [
   },
 ];
 export default function MainCard() {
-  const { weatherData } = useWeather();
+  const { weatherData, name } = useWeather();
 
-  // fonction pour ajouter aux fav
   const addToFavorites = () => {
-    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    const currentUser = localStorage.getItem("currentUser") || "Anonymous";
+    // Récupérer tous les favoris par utilisateur
+    const allUserFavorites = JSON.parse(
+      localStorage.getItem("userFavorites") || "{}",
+    );
 
-    // vérifie si la ville est déjà dans les fav
+    // Crée un tableau vide pour l'utilisateur s'il n'existe pas
+    if (!allUserFavorites[currentUser]) {
+      allUserFavorites[currentUser] = [];
+    }
+
+    // Vérifier si la ville est déjà dans les favoris de cet utilisateur
     if (
-      favorites.some((fav: { name: string }) => fav.name === weatherData.name)
+      allUserFavorites[currentUser].some(
+        (fav: { name: string }) => fav.name === weatherData.name,
+      )
     ) {
       alert("Cette ville est déjà dans vos favoris");
       return;
     }
 
-    // ajoute la ville aux fav si elle n'y est pas
-    favorites.push(weatherData);
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    // Ajouter la ville aux favoris de l'utilisateur
+    allUserFavorites[currentUser].push(weatherData);
+    localStorage.setItem("userFavorites", JSON.stringify(allUserFavorites));
     alert(`${weatherData.name} a été ajoutée aux favoris !`);
   };
 
@@ -60,6 +70,7 @@ export default function MainCard() {
   return (
     <section className="main-card-section">
       <div className="city-date-main-card">
+        <p className="name-main-card">{name ? `Bienvenue ${name} !` : null}</p>
         <h1 className="title-main-card">{weatherData.name}</h1>
         <CurrentDate />
       </div>

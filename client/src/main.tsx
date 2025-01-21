@@ -16,6 +16,7 @@ import App from "./App";
 // import Contact from "./pages/Contact";
 import Details from "./pages/Details";
 import Favorites from "./pages/Favorites";
+import FormPage from "./pages/FormPage";
 import Home from "./pages/Home";
 
 /* ************************************************************************* */
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <FormPage />,
+      },
+      {
+        path: "/Weather",
         element: <Home />,
       },
       {
