@@ -1,18 +1,5 @@
 import { useEffect, useState } from "react";
 import "../styles/Favorites.css";
-import InputSearch from "../components/InputSearch";
-import Navbar from "../components/NavBar";
-
-interface FavoritesTypes {
-  name: string;
-  main: {
-    temp: number;
-    humidity: number;
-  };
-  wind: {
-    speed: number;
-  };
-}
 
 export default function Favorites() {
   const [favorites, setFavorites] = useState([] as FavoritesTypes[]);
@@ -47,7 +34,6 @@ export default function Favorites() {
 
   return (
     <>
-      <InputSearch />
       <h1>Mes favoris</h1>
       <section className="favorites-section">
         {favorites.length === 0 ? (
@@ -72,7 +58,6 @@ export default function Favorites() {
           </div>
         )}
       </section>
-      <Navbar />
     </>
   );
 }
