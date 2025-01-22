@@ -27,3 +27,7 @@ body::before {
   backdrop-filter: blur(2px);
   z-index: -1;
 }
+
+.leaflet-container {
+  height: 50%;
+}

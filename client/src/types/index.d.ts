@@ -76,6 +76,11 @@ interface DayTypes {
   };
 }
 
+type MapPosition = [number, number];
+type MoveMapProps = {
+  position: MapPosition;
+};
+
 interface WeatherDay {
   date: string;
   temp: number;

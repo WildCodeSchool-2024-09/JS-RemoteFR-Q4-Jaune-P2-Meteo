@@ -9,7 +9,8 @@
   align-items: center;
   justify-content: space-around;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.295);
+  background-color: rgba(0, 0, 0, 0.093);
+  z-index: 1001;
 }
 
 .button {
