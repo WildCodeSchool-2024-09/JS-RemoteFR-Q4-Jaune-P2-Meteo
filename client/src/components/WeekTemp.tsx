@@ -29,10 +29,10 @@ export default function WeekTemp() {
   return (
     <div className="week-temp">
       <h2>Température de la semaine</h2>
-      <ResponsiveContainer width="100%" height={500}>
+      <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={dailyWeather}
-          margin={{ top: 0, right: 10, left: -20, bottom: 70 }}
+          margin={{ top: 20, right: 10, left: -20, bottom: 70 }}
         >
           <XAxis
             dataKey="date"

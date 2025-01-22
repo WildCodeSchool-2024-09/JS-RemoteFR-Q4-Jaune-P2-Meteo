@@ -1,7 +1,7 @@
 import "../styles/MainCard.css";
+import { Flip, ToastContainer, toast } from "react-toastify";
 import CurrentDate from "./CurrentDate";
 import SvgIcons from "./SvgIcons";
-import { Flip, ToastContainer, toast } from "react-toastify";
 import { useWeather } from "./WeatherContext";
 
 const icons = [

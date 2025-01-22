@@ -31,8 +31,8 @@ export default function HumidityDetails() {
         data={humidityDay}
         margin={{
           top: 35,
-          right: -10,
-          left: -10,
+          right: 0,
+          left: 0,
           bottom: 60,
         }}
       >

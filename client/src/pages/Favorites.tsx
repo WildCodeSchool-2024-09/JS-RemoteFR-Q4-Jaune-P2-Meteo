@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/Favorites.css";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { Flip } from "react-toastify";
 
 export default function Favorites() {
