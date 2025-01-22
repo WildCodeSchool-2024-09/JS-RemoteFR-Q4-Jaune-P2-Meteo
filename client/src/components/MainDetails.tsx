@@ -2,10 +2,17 @@ import "../styles/MainDetails.css";
 import { useWeather } from "../components/WeatherContext";
 
 export default function MainDetails() {
-  const { weatherData } = useWeather();
+  const { weatherData, cityData } = useWeather();
+
+  if (!weatherData || !weatherData.weather) {
+    return <div className="loading">Loading...</div>;
+  }
 
   return (
     <>
+      <h1 className="title-main-card">
+        {cityData?.length ? cityData[0].local_names.fr : weatherData.name}
+      </h1>
       <div className="background">
         <p>Météo actuelle :</p>
         <div className="MainDetails">

@@ -33,7 +33,7 @@ const icons = [
   },
 ];
 export default function MainCard() {
-  const { weatherData, name } = useWeather();
+  const { weatherData, name, cityData } = useWeather();
 
   const addToFavorites = () => {
     const currentUser = localStorage.getItem("currentUser") || "Anonymous";
@@ -71,7 +71,10 @@ export default function MainCard() {
     <section className="main-card-section">
       <div className="city-date-main-card">
         <p className="name-main-card">{name ? `Bienvenue ${name} !` : null}</p>
-        <h1 className="title-main-card">{weatherData.name}</h1>
+        <h1 className="title-main-card">
+          {" "}
+          {cityData?.length ? cityData[0].local_names.fr : weatherData.name}
+        </h1>
         <CurrentDate />
       </div>
       <div className="main-card-container">
