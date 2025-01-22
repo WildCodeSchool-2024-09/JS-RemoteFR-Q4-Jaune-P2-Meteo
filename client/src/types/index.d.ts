@@ -26,6 +26,12 @@ interface propsTypes {
   handleFetchData: () => void;
   weatherData: weatherDataTypes;
   weatherDays: weatherDaysTypes[];
+  cityData: cityDataTypes[];
+}
+
+interface cityDataTypes {
+  lat: string;
+  lon: string;
 }
 
 interface WeatherproviderType {
@@ -61,3 +67,8 @@ interface DayTypes {
     };
   };
 }
+
+type MapPosition = [number, number];
+type MoveMapProps = {
+  position: MapPosition;
+};

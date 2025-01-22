@@ -17,6 +17,7 @@ import App from "./App";
 import Details from "./pages/Details";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
+import Maps from "./pages/Maps";
 
 /* ************************************************************************* */
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/Favorites",
         element: <Favorites />,
+      },
+      {
+        path: "/Maps",
+        element: <Maps />,
       },
     ],
   },

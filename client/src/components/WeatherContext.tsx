@@ -101,7 +101,14 @@ export function Weatherprovider({ children }: WeatherproviderType) {
 
   return (
     <Weathercontext.Provider
-      value={{ city, setCity, weatherData, handleFetchData, weatherDays }}
+      value={{
+        city,
+        setCity,
+        weatherData,
+        handleFetchData,
+        weatherDays,
+        cityData,
+      }}
     >
       {children}
     </Weathercontext.Provider>
