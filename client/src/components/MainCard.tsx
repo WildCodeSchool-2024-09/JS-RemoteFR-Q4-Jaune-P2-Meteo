@@ -1,6 +1,7 @@
 import "../styles/MainCard.css";
 import CurrentDate from "./CurrentDate";
 import SvgIcons from "./SvgIcons";
+import { Flip, ToastContainer, toast } from "react-toastify";
 import { useWeather } from "./WeatherContext";
 
 const icons = [
@@ -53,14 +54,34 @@ export default function MainCard() {
         (fav: { name: string }) => fav.name === weatherData.name,
       )
     ) {
-      alert("Cette ville est déjà dans vos favoris");
+      toast.warn("Cette ville est déjà dans vos favoris", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Flip,
+      });
       return;
     }
 
     // Ajouter la ville aux favoris de l'utilisateur
     allUserFavorites[currentUser].push(weatherData);
     localStorage.setItem("userFavorites", JSON.stringify(allUserFavorites));
-    alert(`${weatherData.name} a été ajoutée aux favoris !`);
+    toast.success(`${weatherData.name} a été ajoutée aux favoris !`, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Flip,
+    });
   };
 
   if (!weatherData.name) {
@@ -69,6 +90,19 @@ export default function MainCard() {
 
   return (
     <section className="main-card-section">
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Flip}
+      />
       <div className="city-date-main-card">
         <p className="name-main-card">{name ? `Bienvenue ${name} !` : null}</p>
         <h1 className="title-main-card">
