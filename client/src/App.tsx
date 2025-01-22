@@ -1,9 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import "./App.css";
 import InputSearch from "./components/InputSearch";
 import Navbar from "./components/NavBar";
-import "./App.css";
 
 function App() {
+  const location = useLocation();
+
+  if (location.pathname === "/") {
+    return <Outlet />;
+  }
+
   return (
     <>
       <InputSearch />

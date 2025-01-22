@@ -1,6 +1,9 @@
 interface cityDataTypes {
   lon: number;
   lat: number;
+  local_names: {
+    fr: string;
+  };
 }
 
 interface weatherDataTypes {
@@ -8,8 +11,14 @@ interface weatherDataTypes {
   weather: [
     {
       description: string;
+      icon: string;
+      main: string;
     },
   ];
+  sys: {
+    sunrise: number;
+    sunset: number;
+  };
   wind: {
     speed: number;
   };
@@ -17,6 +26,8 @@ interface weatherDataTypes {
     temp: number;
     humidity: number;
     feels_like: number;
+    temp_min: number;
+    temp_max: number;
   };
 }
 
@@ -26,12 +37,9 @@ interface propsTypes {
   handleFetchData: () => void;
   weatherData: weatherDataTypes;
   weatherDays: weatherDaysTypes[];
+  name: string;
+  setName: (name: string) => void;
   cityData: cityDataTypes[];
-}
-
-interface cityDataTypes {
-  lat: string;
-  lon: string;
 }
 
 interface WeatherproviderType {
@@ -72,3 +80,24 @@ type MapPosition = [number, number];
 type MoveMapProps = {
   position: MapPosition;
 };
+
+interface WeatherDay {
+  date: string;
+  temp: number;
+  humidity: number;
+  description: string;
+  windSpeed: number;
+  temp_min: number;
+  temp_max: number;
+}
+
+interface FavoritesTypes {
+  name: string;
+  main: {
+    temp: number;
+    humidity: number;
+  };
+  wind: {
+    speed: number;
+  };
+}

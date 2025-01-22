@@ -12,9 +12,8 @@
 }
 
 .title-main-card {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 500;
-  margin: 1rem;
 }
 
 .date-main-card {
@@ -70,4 +69,16 @@
 .temperature-main-card {
   font-size: 3rem;
   font-weight: 500;
+}
+
+.conditions {
+  display: flex;
+  padding: 0.3rem;
+}
+
+.btn-favorites {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  border-style: none;
 }

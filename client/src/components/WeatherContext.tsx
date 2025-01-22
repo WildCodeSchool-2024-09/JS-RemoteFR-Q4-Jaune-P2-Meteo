@@ -9,6 +9,7 @@ export function Weatherprovider({ children }: WeatherproviderType) {
   const [cityData, setCityData] = useState([] as cityDataTypes[]);
   const [weatherData, setWeatherData] = useState({} as weatherDataTypes);
   const [weatherDays, setWeatherDays] = useState([] as WeatherDay[]);
+  const [name, setName] = useState("" as string);
 
   console.info(cityData, weatherData, weatherDays);
 
@@ -24,6 +25,7 @@ export function Weatherprovider({ children }: WeatherproviderType) {
           error,
         );
       });
+    setCity("");
   };
 
   useEffect(() => {
@@ -32,7 +34,9 @@ export function Weatherprovider({ children }: WeatherproviderType) {
         .get(
           `https://api.openweathermap.org/data/2.5/weather?lat=${cityData[0].lat}&lon=${cityData[0].lon}&units=metric&lang=fr&appid=${apiKey}`,
         )
-        .then((response) => setWeatherData(response.data))
+        .then((response) => {
+          setWeatherData(response.data);
+        })
         .catch((error) => {
           console.error(
             "Erreur lors de la récupération des données météo :",
@@ -41,6 +45,28 @@ export function Weatherprovider({ children }: WeatherproviderType) {
         });
     }
   }, [cityData]);
+
+  useEffect(() => {
+    if (weatherData?.weather) {
+      const weatherCondition = weatherData.weather[0].main;
+      if (weatherCondition === "Clear") {
+        document.body.style.backgroundImage =
+          "url('/assets/images/BG-Main.jpg')";
+      } else if (weatherCondition === "Rain") {
+        document.body.style.backgroundImage = "url('/assets/images/rain.jpg')";
+      } else if (weatherCondition === "Snow") {
+        document.body.style.backgroundImage = "url('/assets/images/snow.jpg')";
+      } else if (weatherCondition === "Clouds") {
+        document.body.style.backgroundImage =
+          "url('/assets/images/clouds.jpg')";
+      } else if (weatherCondition === "Mist") {
+        document.body.style.backgroundImage = "url('/assets/images/mist.jpg')";
+      } else {
+        document.body.style.backgroundImage =
+          "url('/assets/images/BG-Main.jpg')";
+      }
+    }
+  }, [weatherData]);
 
   //implantation du useEffect pour le jour par jour
   useEffect(() => {
@@ -107,6 +133,8 @@ export function Weatherprovider({ children }: WeatherproviderType) {
         weatherData,
         handleFetchData,
         weatherDays,
+        name,
+        setName,
         cityData,
       }}
     >
