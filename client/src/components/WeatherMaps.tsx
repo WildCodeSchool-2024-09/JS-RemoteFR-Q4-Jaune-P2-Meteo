@@ -1,7 +1,7 @@
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useWeather } from "./WeatherContext";
 import { useEffect, useState } from "react";
+import { useWeather } from "./WeatherContext";
 import "../styles/WeatherMap.css";
 const apiKey = import.meta.env.VITE_API_KEY;
 
