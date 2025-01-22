@@ -1,32 +1,34 @@
 import "../styles/DailyForecast.css";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useWeather } from "./WeatherContext";
 
 export default function DailyForecast() {
   const { weatherDays } = useWeather();
 
-  const dailyWeather = weatherDays
-    .filter((day) => new Date(day.dt_txt).getHours() === 12)
-    .map((day) => ({
-      date: new Date(day.dt_txt).toLocaleDateString("fr-FR", {
-        day: "2-digit",
-        month: "2-digit",
-      }),
-      temp: Math.round(day.main.temp),
-      humidity: day.main.humidity,
-      description: day.weather[0].description,
-      windSpeed: day.wind.speed,
-      temp_min: Math.round(day.main.temp_min),
-      temp_max: Math.round(day.main.temp_max),
-    }));
+  const dailyWeather = useMemo(
+    () =>
+      weatherDays
+        .filter((day) => new Date(day.dt_txt).getHours() === 12)
+        .map((day) => ({
+          date: new Date(day.dt_txt).toLocaleDateString("fr-FR", {
+            day: "2-digit",
+            month: "2-digit",
+          }),
+          temp: Math.round(day.main.temp),
+          humidity: day.main.humidity,
+          description: day.weather[0].description,
+          windSpeed: day.wind.speed,
+          temp_min: Math.round(day.main.temp_min),
+          temp_max: Math.round(day.main.temp_max),
+        })),
+    [weatherDays],
+  );
 
   const [selectedDay, setSelectedDay] = useState(dailyWeather[0]);
 
   useEffect(() => {
-    if (!selectedDay) {
-      setSelectedDay(dailyWeather[0]);
-    }
-  }, [dailyWeather, selectedDay]);
+    setSelectedDay(dailyWeather[0]);
+  }, [dailyWeather]);
 
   const handleDayClick = (day: WeatherDay) => {
     setSelectedDay(day);

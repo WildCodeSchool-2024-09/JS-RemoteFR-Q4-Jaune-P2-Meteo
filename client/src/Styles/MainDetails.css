@@ -3,6 +3,7 @@
   padding: 1rem;
   margin: 0 1rem;
   border-radius: 2rem;
+  width: ;
 }
 
 .background p {
@@ -61,4 +62,8 @@
 
 .description span {
   font-weight: 600;
+}
+
+.title-main-card {
+  text-align: center;
 }
