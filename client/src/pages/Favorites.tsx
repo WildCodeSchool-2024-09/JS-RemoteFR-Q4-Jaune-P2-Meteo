@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Favorites.css";
 
 export default function Favorites() {
   const [favorites, setFavorites] = useState([] as FavoritesTypes[]);
   const currentUser = localStorage.getItem("currentUser") || "Anonymous";
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Charger les favoris spécifiques à l'utilisateur
@@ -46,13 +48,24 @@ export default function Favorites() {
                 <p>Température : {Math.round(fav.main.temp)}°C</p>
                 <p>Vent : {Math.round(fav.wind.speed)} km/h</p>
                 <p>Humidité : {Math.round(fav.main.humidity)}%</p>
-                <button
-                  type="button"
-                  className="remove-favorite-button"
-                  onClick={() => removeFavorite(fav.name)}
-                >
-                  Supprimer
-                </button>
+                <div className="btn-container">
+                  <button
+                    type="button"
+                    className="remove-favorite-button"
+                    onClick={() =>
+                      navigate("/Weather", { state: { selectedCity: fav } })
+                    }
+                  >
+                    Voir météo
+                  </button>
+                  <button
+                    type="button"
+                    className="remove-favorite-button"
+                    onClick={() => removeFavorite(fav.name)}
+                  >
+                    Supprimer{" "}
+                  </button>
+                </div>
               </div>
             ))}
           </div>
