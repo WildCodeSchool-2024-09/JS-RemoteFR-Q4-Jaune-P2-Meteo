@@ -1,6 +1,6 @@
 .card_alert {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1rem;
@@ -22,4 +22,34 @@
 }
 .card_alert > div > ul > li {
   list-style: none;
+}
+
+@media (min-width: 640px) {
+  .card_alert {
+    max-width: 440px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card_alert {
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card_alert {
+    max-width: 680px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .card_alert {
+    max-width: 780px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .card_alert {
+    max-width: 880px;
+  }
 }

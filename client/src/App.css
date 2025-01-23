@@ -11,7 +11,7 @@
 body {
   height: 100%;
   width: 100%;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-size: cover;
   transition: background-image 2s ease-in-out;
   position: relative;

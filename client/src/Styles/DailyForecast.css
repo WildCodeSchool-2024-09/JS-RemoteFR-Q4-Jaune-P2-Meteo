@@ -78,3 +78,36 @@ article {
 .day-list > button:last-child {
   border-bottom-right-radius: 1rem;
 }
+
+@media (min-width: 640px) {
+  article {
+    max-width: 440px;
+  }
+}
+
+@media (min-width: 768px) {
+  article {
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 1024px) {
+  article {
+    max-width: 680px;
+  }
+  .main-info {
+    padding: 1rem 6rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  article {
+    max-width: 780px;
+  }
+}
+
+@media (min-width: 1536px) {
+  article {
+    max-width: 880px;
+  }
+}
