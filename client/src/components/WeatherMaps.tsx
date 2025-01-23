@@ -72,7 +72,7 @@ export default function WeatherMaps() {
       <MapContainer
         center={currentPosition}
         zoom={5}
-        style={{ height: "100vh", width: "100%" }}
+        style={{ height: "79vh", width: "100%" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -84,7 +84,7 @@ export default function WeatherMaps() {
         <MoveMap position={currentPosition} />
         <Marker position={currentPosition}>
           <Popup>
-            Current Location <br />
+            <br />
             Lat: {currentPosition[0]}, Lon: {currentPosition[1]}
           </Popup>
         </Marker>
