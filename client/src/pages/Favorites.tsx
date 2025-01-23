@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Favorites.css";
+import { ToastContainer, toast } from "react-toastify";
+import { Flip } from "react-toastify";
 
 export default function Favorites() {
   const [favorites, setFavorites] = useState([] as FavoritesTypes[]);
@@ -31,12 +33,35 @@ export default function Favorites() {
 
     // Mettre à jour l'état local
     setFavorites(allUserFavorites[currentUser]);
-    alert(`${name} a été supprimée des favoris !`);
+    toast.error(`${name} a été supprimée des favoris !`, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Flip,
+    });
   };
 
   return (
     <>
       <h1>Mes favoris</h1>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Flip}
+      />
       <section className="favorites-section">
         {favorites.length === 0 ? (
           <p>Vous n'avez pas encore de favoris.</p>

@@ -12,7 +12,6 @@ export default function Details() {
 
   return (
     <>
-      <h1 className="title-main-card">{weatherData.name}</h1>
       <MainDetails />
       <DailyForecast />
       <HumidityDetails />

@@ -1,16 +1,8 @@
 .favorites-section {
   margin: 0 auto;
-  padding: 1rem;
   width: 80%;
-  background-color: rgba(0, 0, 0, 0.093);
   display: flex;
   align-items: center;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-}
-
-.favorites-section h2 {
-  padding-top: 0.5rem;
 }
 
 .favorites-section p {
@@ -28,4 +20,14 @@
 .btn-container {
   display: flex;
   justify-content: space-evenly;
+}
+.favorite-card {
+  margin-top: 1rem;
+  background-color: rgba(0, 0, 0, 0.093);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+h1 {
+  text-align: center;
 }

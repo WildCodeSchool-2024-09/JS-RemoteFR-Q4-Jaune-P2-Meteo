@@ -25,6 +25,7 @@ export function Weatherprovider({ children }: WeatherproviderType) {
           error,
         );
       });
+    setCity("");
   };
 
   useEffect(() => {
@@ -51,20 +52,15 @@ export function Weatherprovider({ children }: WeatherproviderType) {
       if (weatherCondition === "Clear") {
         document.body.style.backgroundImage =
           "url('/assets/images/BG-Main.jpg')";
-        alert("c'est encore mieux avec des lunettes de soleil !");
       } else if (weatherCondition === "Rain") {
         document.body.style.backgroundImage = "url('/assets/images/rain.jpg')";
-        alert("pensez à prendre votre parapluie ! ");
       } else if (weatherCondition === "Snow") {
         document.body.style.backgroundImage = "url('/assets/images/snow.jpg')";
-        alert("Il est temps de rajouter bonnets et gants !");
       } else if (weatherCondition === "Clouds") {
         document.body.style.backgroundImage =
           "url('/assets/images/clouds.jpg')";
-        alert("Il faudra sortir le manteau aujourd'hui !");
       } else if (weatherCondition === "Mist") {
         document.body.style.backgroundImage = "url('/assets/images/mist.jpg')";
-        alert("Prevoyez les feux de brouillard !");
       } else {
         document.body.style.backgroundImage =
           "url('/assets/images/BG-Main.jpg')";

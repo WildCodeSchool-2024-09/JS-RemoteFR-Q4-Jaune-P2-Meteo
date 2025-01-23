@@ -30,10 +30,10 @@ export default function HumidityDetails() {
         height={300}
         data={humidityDay}
         margin={{
-          top: 25,
+          top: 35,
           right: 0,
           left: 0,
-          bottom: 0,
+          bottom: 60,
         }}
       >
         <CartesianGrid strokeDasharray="2 10" />
@@ -45,9 +45,10 @@ export default function HumidityDetails() {
               month: "2-digit",
             })
           }
+          stroke="#fff"
         />
-        <YAxis yAxisId="left" />
-        <YAxis yAxisId="right" orientation="right" />
+        <YAxis yAxisId="left" stroke="#fff" />
+        <YAxis yAxisId="right" orientation="right" stroke="#fff" />
         <Tooltip
           formatter={(value, data) => {
             if (data === "humidity") {
@@ -77,7 +78,7 @@ export default function HumidityDetails() {
           dataKey="humidity"
           stroke="#0047AB"
         />
-        <Line yAxisId="right" type="monotone" dataKey="temp" stroke="#2F4F4F" />
+        <Line yAxisId="right" type="monotone" dataKey="temp" stroke="#e76f51" />
       </LineChart>
     </ResponsiveContainer>
   );

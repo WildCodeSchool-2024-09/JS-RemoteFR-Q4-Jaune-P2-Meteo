@@ -1,6 +1,9 @@
 interface cityDataTypes {
   lon: number;
   lat: number;
+  local_names: {
+    fr: string;
+  };
 }
 
 interface weatherDataTypes {
@@ -74,6 +77,11 @@ interface DayTypes {
     };
   };
 }
+
+type MapPosition = [number, number];
+type MoveMapProps = {
+  position: MapPosition;
+};
 
 interface WeatherDay {
   date: string;
