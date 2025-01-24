@@ -13,15 +13,18 @@
   backdrop-filter: blur(1px);
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.801);
 }
+
 .card_alert p {
   font-weight: 200;
   font-size: 0.8rem;
 }
+
 .card_alert h2 {
   font-weight: 400;
   font-size: 1rem;
   margin-left: 1rem;
 }
+
 .card_alert > div > ul > li {
   list-style: none;
 }

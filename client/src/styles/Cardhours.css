@@ -5,7 +5,7 @@
   gap: 1rem;
   margin: 0 auto;
   font-weight: 200;
-  max-width: 305px;
+  width: 80%;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.801);
 }
 
@@ -41,30 +41,30 @@
 
 @media (min-width: 640px) {
   .container-hours {
-    max-width: 320px;
+    max-width: 432px;
   }
 }
 
 @media (min-width: 768px) {
   .container-hours {
-    max-width: 420px;
+    max-width: 490px;
   }
 }
 
 @media (min-width: 1024px) {
   .container-hours {
-    max-width: 480px;
+    max-width: 624px;
   }
 }
 
 @media (min-width: 1280px) {
   .container-hours {
-    max-width: 600px;
+    max-width: 720px;
   }
 }
 
 @media (min-width: 1536px) {
   .container-hours {
-    max-width: 700px;
+    max-width: 790px;
   }
 }

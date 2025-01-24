@@ -6,6 +6,7 @@
   width: 90%;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.801);
   backdrop-filter: blur(3px);
+  margin-top: 1rem;
 }
 
 h1 {
