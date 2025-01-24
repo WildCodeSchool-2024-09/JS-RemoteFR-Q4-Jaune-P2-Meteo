@@ -32,14 +32,15 @@
   box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
 }
 
-.btn-search {
+.btn-search,
+.btn-user {
   background: none;
   border: none;
   margin-top: 0.4rem;
   transition: 0.3s ease;
-  margin-right: -32px;
 }
 
-.btn-search:active {
+.btn-search:active,
+.btn-user:active {
   scale: 0.6;
 }
