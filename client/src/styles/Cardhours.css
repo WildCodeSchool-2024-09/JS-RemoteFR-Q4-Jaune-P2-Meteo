@@ -6,6 +6,7 @@
   margin: 0 auto;
   font-weight: 200;
   max-width: 305px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.801);
 }
 
 .container-hours::-webkit-scrollbar {
@@ -32,9 +33,10 @@
   text-align: center;
   width: 5.3rem;
   height: 7.3rem;
-  background-color: rgba(0, 0, 0, 0.093);
+  background-color: rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   padding: 1rem 1rem;
+  backdrop-filter: blur(3px);
 }
 
 @media (min-width: 640px) {

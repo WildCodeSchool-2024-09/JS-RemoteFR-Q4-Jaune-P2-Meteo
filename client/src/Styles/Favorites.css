@@ -2,6 +2,7 @@
   margin: 0 auto;
   width: 80%;
   padding-bottom: 5rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.801);
 }
 
 .favorites-container {
@@ -29,10 +30,11 @@
 }
 .favorite-card {
   margin-top: 1rem;
-  background-color: rgba(0, 0, 0, 0.093);
+  background-color: rgba(0, 0, 0, 0.25);
   padding: 1rem;
   border-radius: 1rem;
   width: 100%;
+  backdrop-filter: blur(3px);
 }
 
 @media (min-width: 640px) {

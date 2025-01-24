@@ -47,8 +47,8 @@ export default function DailyForecast() {
           </div>
           <div className="right-side">
             <p className="time">{selectedDay.date}</p>
-            <p>Humidity: {selectedDay.humidity}%</p>
-            <p>Wind: {selectedDay.windSpeed} km/h</p>
+            <p>Humidité: {selectedDay.humidity}%</p>
+            <p>Vent: {selectedDay.windSpeed} km/h</p>
           </div>
         </div>
       )}
