@@ -54,7 +54,7 @@
 .layer-button:hover {
   color: rgba(0, 0, 0, 0.575);
   font-size: 1.1rem;
-  transition: 0.8s;
+  transition: 0.3s;
   font-weight: 700;
   cursor: pointer;
 }
@@ -113,4 +113,18 @@
 
 .leaflet-bar a {
   background-color: rgba(0, 0, 0, 0.093);
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: rgba(0, 0, 0, 0.093);
+}
+
+.leaflet-popup-content {
+  font-size: 1rem;
+}
+
+.leaflet-popup-content p {
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  text-shadow: 1px 1px 1px black;
 }

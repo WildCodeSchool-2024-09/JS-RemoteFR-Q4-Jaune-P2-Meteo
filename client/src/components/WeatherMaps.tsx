@@ -1,8 +1,8 @@
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { useWeather } from "./WeatherContext";
-import "../styles/WeatherMap.css";
+import "../Styles/WeatherMap.css";
 const apiKey = import.meta.env.VITE_API_KEY;
 
 const MoveMap = ({ position }: MoveMapProps) => {
@@ -49,6 +49,12 @@ export default function WeatherMaps() {
   const handleShowNav = () => {
     setBurger(!burger);
   };
+
+  const { weatherData } = useWeather();
+  if (!weatherData || !cityData[0]) {
+    return <p>cherchez une ville</p>;
+  }
+
   return (
     <>
       <div className={`navbar ${burger ? "show-nav" : "hide-nav"}`}>
@@ -84,8 +90,16 @@ export default function WeatherMaps() {
         <MoveMap position={currentPosition} />
         <Marker position={currentPosition}>
           <Popup>
-            <br />
-            Lat: {currentPosition[0]}, Lon: {currentPosition[1]}
+            {cityData?.[0].name ? (
+              <p>Ville : {cityData[0].name}</p>
+            ) : (
+              <p>Chargement des données météo...</p>
+            )}
+            {weatherData?.weather?.[0] ? (
+              <p>Condition : {weatherData.weather[0].description}</p>
+            ) : (
+              <p>Chargement des données météo...</p>
+            )}
           </Popup>
         </Marker>
       </MapContainer>

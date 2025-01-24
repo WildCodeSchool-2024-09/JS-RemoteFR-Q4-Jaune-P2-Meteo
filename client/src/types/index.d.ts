@@ -1,6 +1,7 @@
 interface cityDataTypes {
   lon: number;
   lat: number;
+  name: string;
   local_names: {
     fr: string;
   };
