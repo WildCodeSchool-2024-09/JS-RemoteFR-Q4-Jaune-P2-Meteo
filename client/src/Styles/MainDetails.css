@@ -1,18 +1,18 @@
 .background {
   background-color: rgba(0, 0, 0, 0.093);
   padding: 1rem;
-  margin: 0 1rem;
+  margin: 0 auto;
   border-radius: 2rem;
-  width: ;
+  width: 90%;
 }
 
 .background p {
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
-.degré {
-  font-size: 2rem;
+.degre {
+  font-size: 1.5rem;
   font-weight: 300;
 }
 
@@ -23,29 +23,33 @@
 }
 
 .minmax p {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 300;
   margin-bottom: 1rem;
 }
 
 .MainDetails {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 1rem;
   margin: 0 1rem;
 }
 
-.météo {
+.meteo {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.météo2 {
-  display: flex;
-  flex-direction: column;
+.meteo > img {
+  margin-bottom: -1rem;
+}
+
+.meteo2 > .description {
+  font-size: 2rem;
+  text-align: center;
 }
 
 .trait {
@@ -54,10 +58,10 @@
 }
 
 .description p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 300;
-  line-height: 1rem;
   margin: 1rem;
+  text-align: center;
 }
 
 .description span {
@@ -66,4 +70,34 @@
 
 .title-main-card {
   text-align: center;
+}
+
+@media (min-width: 640px) {
+  .background {
+    max-width: 440px;
+  }
+}
+
+@media (min-width: 768px) {
+  .background {
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .background {
+    max-width: 680px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .background {
+    max-width: 780px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .background {
+    max-width: 880px;
+  }
 }

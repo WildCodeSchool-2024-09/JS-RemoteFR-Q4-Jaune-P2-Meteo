@@ -1,10 +1,29 @@
 .container-hours {
   display: flex;
   overflow-x: scroll;
-  gap: 1.5rem;
+  overflow-y: hidden;
+  gap: 1rem;
   margin: 0 auto;
   font-weight: 200;
-  width: 77vw;
+  max-width: 305px;
+}
+
+.container-hours::-webkit-scrollbar {
+  height: 6px;
+}
+
+.container-hours::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.container-hours::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.container-hours::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .card-hour {
@@ -16,4 +35,34 @@
   background-color: rgba(0, 0, 0, 0.093);
   border-radius: 20px;
   padding: 1rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-hours {
+    max-width: 320px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-hours {
+    max-width: 420px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-hours {
+    max-width: 480px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-hours {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container-hours {
+    max-width: 700px;
+  }
 }

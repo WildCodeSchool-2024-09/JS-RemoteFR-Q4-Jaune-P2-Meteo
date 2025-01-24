@@ -1,8 +1,14 @@
 .favorites-section {
   margin: 0 auto;
   width: 80%;
+  padding-bottom: 5rem;
+}
+
+.favorites-container {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .favorites-section p {
@@ -26,6 +32,37 @@
   background-color: rgba(0, 0, 0, 0.093);
   padding: 1rem;
   border-radius: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .favorite-card {
+    max-width: 340px;
+  }
+}
+
+@media (min-width: 768px) {
+  .favorite-card {
+    max-width: 420px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .favorite-card {
+    max-width: 480px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .favorite-card {
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .favorite-card {
+    max-width: 580px;
+  }
 }
 
 h1 {

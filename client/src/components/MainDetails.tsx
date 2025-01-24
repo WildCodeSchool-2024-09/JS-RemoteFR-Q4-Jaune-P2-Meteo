@@ -16,21 +16,21 @@ export default function MainDetails() {
       <div className="background">
         <p>Météo actuelle :</p>
         <div className="MainDetails">
-          <div className="météo">
+          <div className="meteo">
             <img
               src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
               alt={`${weatherData.weather[0].icon}`}
             />
             <p>
-              <span className="degré">
+              <span className="degre">
                 {Math.round(weatherData.main.temp)}°C
               </span>
             </p>
           </div>
-          <div className="météo2">
+          <div className="meteo2">
             <p className="description">{weatherData.weather[0].description}</p>
             <p className="ressenti">
-              ressenti {Math.round(weatherData.main.feels_like)}°C{" "}
+              ressenti: {Math.round(weatherData.main.feels_like)}°C{" "}
             </p>
           </div>
         </div>
