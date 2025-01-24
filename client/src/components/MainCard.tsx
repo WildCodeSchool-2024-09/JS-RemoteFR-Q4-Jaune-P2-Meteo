@@ -106,8 +106,7 @@ export default function MainCard() {
       <div className="city-date-main-card">
         <p className="name-main-card">{name ? `Bienvenue ${name} !` : null}</p>
         <h1 className="title-main-card">
-          {" "}
-          {cityData?.length ? cityData[0].local_names.fr : weatherData.name}
+          {cityData.length ? cityData[0].name : weatherData.name}
         </h1>
         <CurrentDate />
       </div>

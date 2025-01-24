@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Favorites.css";
 import { ToastContainer, toast } from "react-toastify";
 import { Flip } from "react-toastify";
+import { useWeather } from "../components/WeatherContext";
 
 export default function Favorites() {
   const [favorites, setFavorites] = useState([] as FavoritesTypes[]);
   const currentUser = localStorage.getItem("currentUser") || "Anonymous";
   const navigate = useNavigate();
+  const { setCityData } = useWeather();
 
   useEffect(() => {
     // Charger les favoris spécifiques à l'utilisateur
@@ -46,6 +48,18 @@ export default function Favorites() {
     });
   };
 
+  const handleNavigateToWeather = (fav: FavoritesTypes) => {
+    setCityData([
+      {
+        name: fav.name,
+        lat: fav.lat,
+        lon: fav.lon,
+        local_names: { fr: fav.name },
+      },
+    ]);
+    navigate("/Weather", { state: { selectedCity: fav } });
+  };
+
   return (
     <>
       <h1>Mes favoris</h1>
@@ -77,9 +91,7 @@ export default function Favorites() {
                   <button
                     type="button"
                     className="remove-favorite-button"
-                    onClick={() =>
-                      navigate("/Weather", { state: { selectedCity: fav } })
-                    }
+                    onClick={() => handleNavigateToWeather(fav)}
                   >
                     Voir météo
                   </button>

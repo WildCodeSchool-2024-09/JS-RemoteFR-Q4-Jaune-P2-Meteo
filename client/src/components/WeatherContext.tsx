@@ -136,6 +136,7 @@ export function Weatherprovider({ children }: WeatherproviderType) {
         weatherDays,
         setWeatherDays,
         cityData,
+        setCityData,
         name,
         setName,
       }}

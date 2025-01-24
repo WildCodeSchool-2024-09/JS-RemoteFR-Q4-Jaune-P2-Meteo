@@ -11,7 +11,7 @@ export default function MainDetails() {
   return (
     <>
       <h1 className="title-main-card">
-        {cityData?.length ? cityData[0].local_names.fr : weatherData.name}
+        {cityData.length ? cityData[0].name : weatherData.name}
       </h1>
       <div className="background">
         <p>Météo actuelle :</p>

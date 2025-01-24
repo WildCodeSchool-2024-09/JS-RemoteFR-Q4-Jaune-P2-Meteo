@@ -1,6 +1,7 @@
 interface cityDataTypes {
   lon: number;
   lat: number;
+  name: string;
   local_names: {
     fr: string;
   };
@@ -42,6 +43,7 @@ interface propsTypes {
   name: string;
   setName: (name: string) => void;
   cityData: cityDataTypes[];
+  setCityData: (data: cityDataTypes[]) => void;
 }
 
 interface WeatherproviderType {
@@ -95,6 +97,8 @@ interface WeatherDay {
 
 interface FavoritesTypes {
   name: string;
+  lat: number;
+  lon: number;
   main: {
     temp: number;
     humidity: number;
