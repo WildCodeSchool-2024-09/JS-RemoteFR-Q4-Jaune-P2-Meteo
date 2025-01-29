@@ -7,7 +7,7 @@ import { useWeather } from "../components/WeatherContext";
 
 export default function Favorites() {
   const [favorites, setFavorites] = useState([] as FavoritesTypes[]);
-  const currentUser = localStorage.getItem("currentUser") || "Anonymous";
+  const currentUser = localStorage.getItem("currentUser") || "Explorateur";
   const navigate = useNavigate();
   const { setCityData } = useWeather();
 
