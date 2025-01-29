@@ -18,22 +18,7 @@ const MoveMap = ({ position }: MoveMapProps) => {
 };
 
 export default function WeatherMaps() {
-  const { cityData } = useWeather();
-  const [currentPosition, setCurrentPosition] = useState([
-    51.505, -0.09,
-  ] as MapPosition); // Default to London coordinates
-
-  useEffect(() => {
-    if (
-      cityData &&
-      Array.isArray(cityData) &&
-      cityData.length > 0 &&
-      cityData[0].lat &&
-      cityData[0].lon
-    ) {
-      setCurrentPosition([cityData[0].lat, cityData[0].lon]);
-    }
-  }, [cityData]);
+  const { cityData, weatherData } = useWeather();
 
   const layers = [
     { layer: "clouds", name: "Nuage" },
@@ -44,13 +29,11 @@ export default function WeatherMaps() {
   ];
   const [changeMap, setChangeMap] = useState(layers[0].layer);
 
-  // Création d'un menu burger avec un state
   const [burger, setBurger] = useState(false);
   const handleShowNav = () => {
     setBurger(!burger);
   };
 
-  const { weatherData } = useWeather();
   if (!weatherData || !cityData[0]) {
     return <p>cherchez une ville</p>;
   }
@@ -76,7 +59,7 @@ export default function WeatherMaps() {
         </button>
       </div>
       <MapContainer
-        center={currentPosition}
+        center={[weatherData.coord.lat, weatherData.coord.lon]}
         zoom={5}
         style={{ height: "79vh", width: "100%" }}
       >
@@ -87,8 +70,8 @@ export default function WeatherMaps() {
         <TileLayer
           url={`https://tile.openweathermap.org/map/${changeMap}/{z}/{x}/{y}.png?appid=${apiKey}`}
         />
-        <MoveMap position={currentPosition} />
-        <Marker position={currentPosition}>
+        <MoveMap position={[weatherData.coord.lat, weatherData.coord.lon]} />
+        <Marker position={[weatherData.coord.lat, weatherData.coord.lon]}>
           <Popup>
             {cityData?.[0].name ? (
               <p>Ville : {cityData[0].name}</p>

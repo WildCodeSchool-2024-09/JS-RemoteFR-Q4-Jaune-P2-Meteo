@@ -30,6 +30,10 @@ interface weatherDataTypes {
     temp_min: number;
     temp_max: number;
   };
+  coord: {
+    lat: number;
+    lon: number;
+  };
 }
 
 interface propsTypes {
