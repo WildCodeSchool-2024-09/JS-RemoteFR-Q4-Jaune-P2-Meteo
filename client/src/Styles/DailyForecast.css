@@ -4,9 +4,11 @@ article {
   align-items: center;
   margin: 0 auto;
   width: 80%;
-  background-color: rgba(0, 0, 0, 0.093);
+  background-color: rgba(0, 0, 0, 0.25);
   border-radius: 1rem;
   margin-top: 1rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.801);
+  backdrop-filter: blur(3px);
 }
 
 .main-info {
