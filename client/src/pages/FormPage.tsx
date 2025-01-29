@@ -16,7 +16,7 @@ export default function FormPage() {
     );
     // Filtre pour ne garder que les utilisateurs non anonymes
     const users = Object.keys(allUserFavorites).filter(
-      (user) => user !== "Anonymous",
+      (user) => user !== "Explorateur",
     );
     setExistingUsers(users);
   }, []);
@@ -67,8 +67,8 @@ export default function FormPage() {
   // Gère le clic sur le bouton "Je ne veux pas donner un nom"
   const handleSecondaryButton = () => {
     // Configure l'utilisateur comme anonyme
-    localStorage.setItem("currentUser", "Anonymous");
-    setName("Anonymous");
+    localStorage.setItem("currentUser", "Explorateur");
+    setName("Explorateur");
     // Redirige vers la page météo
     navigate("/Weather");
   };
@@ -84,7 +84,8 @@ export default function FormPage() {
 
   return (
     <section className="form-container">
-      <h1>Bienvenue sur Weather App</h1>
+      <h1>Bienvenue sur Windora</h1>
+      <p>Explorateur de météo</p>
       <form className="search-form" onSubmit={onSubmit}>
         <label htmlFor="name">Votre nom</label>
         <input
@@ -100,7 +101,7 @@ export default function FormPage() {
 
         {existingUsers.length > 0 && (
           <div className="existing-users">
-            <p>Ou sélectionnez un utilisateur existant :</p>
+            <p>Ou sélectionnez un explorateur existant :</p>
             <div className="users-list">
               {existingUsers.map((user) => (
                 <div key={user} className="user-card">

@@ -37,7 +37,7 @@ export default function MainCard() {
   const { weatherData, name, cityData } = useWeather();
 
   const addToFavorites = () => {
-    const currentUser = localStorage.getItem("currentUser") || "Anonymous";
+    const currentUser = localStorage.getItem("currentUser") || "Explorateur";
     // Récupérer tous les favoris par utilisateur
     const allUserFavorites = JSON.parse(
       localStorage.getItem("userFavorites") || "{}",
