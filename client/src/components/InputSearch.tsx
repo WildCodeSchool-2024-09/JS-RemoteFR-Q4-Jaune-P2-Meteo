@@ -46,6 +46,11 @@ export default function InputSearch() {
           placeholder="Chercher une ville..."
           className="input-text"
           onChange={handleChange}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleFetchData();
+            }
+          }}
         />
         <button type="button" className="btn-search" onClick={handleFetchData}>
           <SvgIcons
