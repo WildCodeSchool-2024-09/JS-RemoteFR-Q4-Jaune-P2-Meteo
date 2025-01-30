@@ -1,6 +1,7 @@
 .week-temp {
   width: 100%;
   margin: 0 auto;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.801);
 }
 
 .week-temp h2 {

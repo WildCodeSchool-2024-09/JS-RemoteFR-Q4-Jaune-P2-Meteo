@@ -50,13 +50,13 @@ export default function MainDetails() {
             km/h
           </p>
           <p>
-            <span>levé</span> du soleil à{" "}
+            <span>Lever</span> du soleil à{" "}
             <span>
               {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString()}
             </span>
           </p>
           <p>
-            <span>Couché</span> du soleil à{" "}
+            <span>Coucher</span> du soleil à{" "}
             <span>
               {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString()}
             </span>
