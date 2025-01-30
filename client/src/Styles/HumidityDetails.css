@@ -8,6 +8,10 @@
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.801);
 }
 
+.recharts-legend-item-text {
+  text-shadow: none;
+}
+
 @media (min-width: 640px) {
   .charts-container {
     max-width: 540px;

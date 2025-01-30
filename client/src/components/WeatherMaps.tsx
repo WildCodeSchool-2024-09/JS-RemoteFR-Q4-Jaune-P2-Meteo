@@ -79,7 +79,7 @@ export default function WeatherMaps() {
               <p>Chargement des données météo...</p>
             )}
             {weatherData?.weather?.[0] ? (
-              <p>Condition : {weatherData.weather[0].description}</p>
+              <p>Conditions : {weatherData.weather[0].description}</p>
             ) : (
               <p>Chargement des données météo...</p>
             )}

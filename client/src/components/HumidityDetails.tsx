@@ -78,12 +78,14 @@ export default function HumidityDetails() {
             yAxisId="left"
             type="monotone"
             dataKey="humidity"
+            name="Humidité"
             stroke="#0047AB"
           />
           <Line
             yAxisId="right"
             type="monotone"
             dataKey="temp"
+            name="Température"
             stroke="#e76f51"
           />
         </LineChart>
