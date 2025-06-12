@@ -59,7 +59,9 @@ export default function WeatherMaps() {
         </button>
       </div>
       <MapContainer
-        center={[weatherData.coord.lat, weatherData.coord.lon]}
+        center={
+          [weatherData.coord.lat, weatherData.coord.lon] as [number, number]
+        }
         zoom={5}
         style={{ height: "79vh", width: "100%" }}
       >
@@ -70,7 +72,11 @@ export default function WeatherMaps() {
         <TileLayer
           url={`https://tile.openweathermap.org/map/${changeMap}/{z}/{x}/{y}.png?appid=${apiKey}`}
         />
-        <MoveMap position={[weatherData.coord.lat, weatherData.coord.lon]} />
+        <MoveMap
+          position={
+            [weatherData.coord.lat, weatherData.coord.lon] as [number, number]
+          }
+        />
         <Marker position={[weatherData.coord.lat, weatherData.coord.lon]}>
           <Popup>
             {cityData?.[0].name ? (
