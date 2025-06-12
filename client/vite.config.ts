@@ -16,11 +16,11 @@ export default defineConfig({
       manifest: {
         name: "Windora",
         short_name: "Windora",
-        description: "Application météo moderne",
+        description: "Modern weather application",
+        start_url: "/",
         theme_color: "#1976d2",
         background_color: "#ffffff",
         display: "standalone",
-        start_url: "/",
         icons: [
           {
             src: "/assets/icon-192x192.png",
