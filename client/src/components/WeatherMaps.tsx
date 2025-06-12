@@ -77,7 +77,11 @@ export default function WeatherMaps() {
             [weatherData.coord.lat, weatherData.coord.lon] as [number, number]
           }
         />
-        <Marker position={[weatherData.coord.lat, weatherData.coord.lon]}>
+        <Marker
+          position={
+            [weatherData.coord.lat, weatherData.coord.lon] as [number, number]
+          }
+        >
           <Popup>
             {cityData?.[0].name ? (
               <p>Ville : {cityData[0].name}</p>
