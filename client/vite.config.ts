@@ -13,26 +13,8 @@ export default defineConfig({
         "robots.txt",
         "apple-touch-icon.png",
       ],
-      manifest: {
-        name: "Windora",
-        short_name: "Windora",
-        description: "Modern weather application",
-        start_url: "/",
-        theme_color: "#1976d2",
-        background_color: "#ffffff",
-        display: "standalone",
-        icons: [
-          {
-            src: "/assets/icon-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "/assets/icon-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-        ],
+      workbox: {
+        cleanupOutdatedCaches: true,
       },
     }),
   ],

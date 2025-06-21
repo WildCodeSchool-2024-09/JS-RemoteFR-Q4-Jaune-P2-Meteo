@@ -13,37 +13,39 @@ export function Weatherprovider({ children }: WeatherproviderType) {
 
   console.info(cityData, weatherData, weatherDays);
 
-  const handleFetchData = () => {
-    axios
-      .get(
+  const handleFetchData = async () => {
+    try {
+      const response = await axios.get(
         `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`,
-      )
-      .then((response) => setCityData(response.data))
-      .catch((error) => {
-        console.error(
-          "Erreur lors de la récupération des données météo :",
-          error,
-        );
-      });
-    setCity("");
+      );
+      setCityData(response.data);
+      setCity(""); // Réinitialise la ville après l'appel
+    } catch (error) {
+      console.error(
+        "Erreur lors de la récupération des données météo :",
+        error,
+      );
+    }
   };
 
   useEffect(() => {
-    if (cityData.length) {
-      axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${cityData[0].lat}&lon=${cityData[0].lon}&units=metric&lang=fr&appid=${apiKey}`,
-        )
-        .then((response) => {
+    const fetchWeatherData = async () => {
+      if (cityData.length) {
+        try {
+          const response = await axios.get(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${cityData[0].lat}&lon=${cityData[0].lon}&units=metric&lang=fr&appid=${apiKey}`,
+          );
           setWeatherData(response.data);
-        })
-        .catch((error) => {
+        } catch (error) {
           console.error(
             "Erreur lors de la récupération des données météo :",
             error,
           );
-        });
-    }
+        }
+      }
+    };
+
+    fetchWeatherData();
   }, [cityData]);
 
   useEffect(() => {
@@ -70,50 +72,48 @@ export function Weatherprovider({ children }: WeatherproviderType) {
 
   //implantation du useEffect pour le jour par jour
   useEffect(() => {
-    if (cityData.length) {
-      axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${cityData[0].lat}&lon=${cityData[0].lon}&units=metric&lang=fr&appid=${apiKey}`,
-        )
-        .then((response) => setWeatherDays(response.data.list))
-        .catch((error) => {
+    const fetchWeatherForecast = async () => {
+      if (cityData.length) {
+        try {
+          const response = await axios.get(
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${cityData[0].lat}&lon=${cityData[0].lon}&units=metric&lang=fr&appid=${apiKey}`,
+          );
+          setWeatherDays(response.data.list);
+        } catch (error) {
           console.error(
-            "Erreur lors de la récupération des données météo :",
+            "Erreur lors de la récupération des prévisions météo :",
             error,
           );
-        });
-    }
+        }
+      }
+    };
+
+    fetchWeatherForecast();
   }, [cityData]);
 
   // Get user location
 
   useEffect(() => {
-    const getUserLocation = () => {
+    const getUserLocation = async () => {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
+        navigator.geolocation.getCurrentPosition(async (position) => {
           const { latitude, longitude } = position.coords;
-          axios
-            .get(
+          try {
+            const weatherResponse = await axios.get(
               `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=fr&appid=${apiKey}`,
-            )
-            .then((response) => setWeatherData(response.data))
-            .catch((error) => {
-              console.error(
-                "Erreur lors de la récupération des données météo :",
-                error,
-              );
-            });
-          axios
-            .get(
+            );
+            setWeatherData(weatherResponse.data);
+
+            const forecastResponse = await axios.get(
               `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&lang=fr&appid=${apiKey}`,
-            )
-            .then((response) => setWeatherDays(response.data.list))
-            .catch((error) => {
-              console.error(
-                "Erreur lors de la récupération des données météo :",
-                error,
-              );
-            });
+            );
+            setWeatherDays(forecastResponse.data.list);
+          } catch (error) {
+            console.error(
+              "Erreur lors de la récupération des données météo :",
+              error,
+            );
+          }
         });
       } else {
         console.error(
